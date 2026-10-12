@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Closing the gap between imagining and building | Marina Trajkovska</title>
+  <meta name="description" content="Helping people become AI-native and accomplish things they once thought were beyond their reach.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Closing the gap between imagining and building</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">
+          <time datetime="2026-10-12">Oct 12, 2026</time>
+        </p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/ai.html">AI</a>
+          <a class="post-topic" href="../topics/product.html">Product</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>Why becoming AI-native isn’t just about delegating work to agents. It’s about giving people real ownership and understanding of what they create.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <p>
+            I want to live in a world where more people can act on what they imagine. Often, the person closest to a problem lacks the time, technical skills, or resources to solve it. Much of my career has been about helping people close that gap, and AI is making it possible to do that on a much larger scale.
+          </p>
+
+          <p>
+            Today, someone can describe an idea in plain language and make it a reality in a day. This gives people the chance to try things they previously assumed required a bigger team, more money, or years of technical experience.
+          </p>
+
+          <p>
+            But letting an AI do work also means letting it make decisions. Whose definition of success is it following? Can we understand what it’s doing and change its direction? Even as AI takes on more of the execution, people should still feel ownership of what they create.
+          </p>
+
+          <p>
+            That starts with being honest about what AI is good at today and where it still falls short. We’re all still figuring this out, and acknowledging the limits is just as important as showing what’s possible.
+          </p>
+
+          <p>
+            I’ve seen how much this matters when building AI products and working directly with teams and customers. People need something they can rely on, steer, and feel comfortable using.
+          </p>
+
+          <p>
+            The work that excites me most right now is helping people become AI-native and empowering them to accomplish things they once thought were beyond their reach, while giving them a clear understanding of the intelligence helping them get there.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

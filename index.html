@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <title>Marina Trajkovska | AI agents &amp; GTM engineering</title>
+  <meta name="description" content="Notes from the intersection of AI, systems, and GTM engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <!-- Hero Header: Editorial Intro + Social Links + 5-Photo Contact Strip -->
+    <header class="site-header home-hero">
+      <div class="site-intro">
+        <div class="site-title-row">
+          <div class="site-identity">
+            <h1 class="site-title">Marina Trajkovska</h1>
+            <span class="site-meta-badge">New York · Solutions Architect (Applied AI) @ Vellum</span>
+          </div>
+          <nav class="social-icons" aria-label="Marina's social profiles">
+            <a class="social-icon" href="https://x.com/marinatrajk" target="_blank" rel="noopener noreferrer" aria-label="Marina Trajkovska on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+              </svg>
+            </a>
+            <a class="social-icon" href="https://www.linkedin.com/in/marinatrajkovska/" target="_blank" rel="noopener noreferrer" aria-label="Marina Trajkovska on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.352V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM3.555 9h3.564v11.452H3.555z"></path>
+              </svg>
+            </a>
+            <a class="social-icon" href="https://github.com/marinatrajk" target="_blank" rel="noopener noreferrer" aria-label="Marina Trajkovska on GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 .297a12 12 0 0 0-3.797 23.39c.6.113.82-.26.82-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.008 0c2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.806 5.624-5.478 5.921.43.372.814 1.103.814 2.222v3.293c0 .32.216.694.825.576A12.002 12.002 0 0 0 12 .297z"></path>
+              </svg>
+            </a>
+          </nav>
+        </div>
+
+        <div class="home-bio">
+          <p>
+            Hi, I'm Marina! Foodie, dog mom, new to New York, Knicks fan and a builder who loves helping teams actually use AI day to day.
+          </p>
+          <p>
+            I started out in QA,
+            then ran my own AI studio building LLM workflows for founders. Along the way, I built a career
+            agent end to end as founding engineer at <a href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek</a>
+            and helped clients figure out where AI actually belongs as a solutions architect at <a href="https://bubble.io/" target="_blank" rel="noopener noreferrer">Bubble</a>.
+          </p>
+          <p>
+            These days I'm at <a href="https://vellum.ai" target="_blank" rel="noopener noreferrer">Vellum</a>, where I started as a Solutions Architect
+            onboarding and expanding customers before moving into GTM engineering to automate our release
+            process from build to release notes and docs.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5 Candid Snapshots Filmstrip -->
+      <div class="snapshot-stack" aria-label="Five candid snapshots from Marina Trajkovska's life and work">
+        <button type="button" class="snapshot snapshot-1" aria-label="Enlarge photo of Marina overlooking the city">
+          <div class="snapshot-image">
+            <img src="./images/profile/marina-view.jpg" alt="Marina Trajkovska smiling with a panoramic city view behind her">
+          </div>
+        </button>
+        <button type="button" class="snapshot snapshot-2" aria-label="Enlarge photo of Marina in New York">
+          <div class="snapshot-image">
+            <img src="./images/profile/marina-nyc.jpg" alt="Marina Trajkovska having iced coffee outdoors in New York">
+          </div>
+        </button>
+        <button type="button" class="snapshot snapshot-3" aria-label="Enlarge photo of Marina at sunset by the ocean">
+          <div class="snapshot-image">
+            <img src="./images/profile/marina-sunset.jpg" alt="Marina Trajkovska smiling at sunset by the ocean and palm trees">
+          </div>
+        </button>
+        <button type="button" class="snapshot snapshot-4" aria-label="Enlarge black and white photo of Marina in Skopje">
+          <div class="snapshot-image">
+            <img src="./images/profile/marina-skopje.jpg" alt="Black and white portrait of Marina Trajkovska in Skopje">
+          </div>
+        </button>
+        <button type="button" class="snapshot snapshot-5" aria-label="Enlarge photo of Marina working on her laptop">
+          <div class="snapshot-image">
+            <img src="./images/profile/marina-laptop.jpg" alt="Marina Trajkovska smiling while working on her laptop">
+          </div>
+        </button>
+      </div>
+
+      <!-- Lightbox Modal for Snapshots -->
+      <dialog class="snapshot-lightbox" aria-label="Expanded snapshot">
+        <button type="button" class="snapshot-lightbox-close" aria-label="Close expanded photo">Close</button>
+        <img src="" alt="">
+      </dialog>
+    </header>
+
+    <!-- Main Content Sections -->
+    <div class="recent-section">
+      <!-- Section 1: AI Musings -->
+      <section class="index-section" aria-labelledby="musings-title">
+        <div class="section-sidebar">
+          <h2 class="section-heading" id="musings-title">AI musings</h2>
+        </div>
+        <div class="section-body">
+          <ul class="writing-list">
+            <li class="content-row">
+              <span class="date"><time datetime="2026-10-12">Oct 12, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/closing-the-gap.html">
+                    <span class="row-title">Closing the gap between imagining and building</span>
+                  </a>
+                  <a class="row-topic" href="./topics/ai.html" aria-label="View AI content">AI</a>
+                </span>
+                <a class="row-cue" href="./blog/closing-the-gap.html" aria-label="Read: Closing the gap between imagining and building">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-06-25">Jun 25, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/wtf-are-plugins.html">
+                    <span class="row-title">WTF Are Plugins?</span>
+                  </a>
+                  <a class="row-topic" href="./topics/agents.html" aria-label="View Agents content">Agents</a>
+                </span>
+                <a class="row-cue" href="./blog/wtf-are-plugins.html" aria-label="Read: WTF Are Plugins?">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-05-01">May 1, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/ai-in-2026.html">
+                    <span class="row-title">AI in 2026</span>
+                  </a>
+                  <a class="row-topic" href="./topics/ai.html" aria-label="View AI content">AI</a>
+                </span>
+                <a class="row-cue" href="./blog/ai-in-2026.html" aria-label="Read: AI in 2026">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-04-28">Apr 28, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/ai-memory-is-not-one-thing.html">
+                    <span class="row-title">AI memory is not one thing</span>
+                  </a>
+                  <a class="row-topic" href="./topics/agents.html" aria-label="View Agents content">Agents</a>
+                </span>
+                <a class="row-cue" href="./blog/ai-memory-is-not-one-thing.html" aria-label="Read: AI memory is not one thing">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-04-23">Apr 23, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/is-ai-getting-emotional-with-real-money.html">
+                    <span class="row-title">Is AI getting emotional with real money?</span>
+                  </a>
+                  <a class="row-topic" href="./topics/ai.html" aria-label="View AI content">AI</a>
+                </span>
+                <a class="row-cue" href="./blog/is-ai-getting-emotional-with-real-money.html" aria-label="Read: Is AI getting emotional with real money?">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-04-13">Apr 13, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/saas-brain-vs-assistant-brain.html">
+                    <span class="row-title">SaaS brain vs Assistant brain: The mental model shift that changes everything</span>
+                  </a>
+                  <a class="row-topic" href="./topics/product.html" aria-label="View Product content">Product</a>
+                </span>
+                <a class="row-cue" href="./blog/saas-brain-vs-assistant-brain.html" aria-label="Read: SaaS brain vs Assistant brain">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date"><time datetime="2026-03-27">Mar 27, 2026</time></span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/state-of-ai-agents-2026.html">
+                    <span class="row-title">The Current State of AI Agents in 2026</span>
+                  </a>
+                  <a class="row-topic" href="./topics/agents.html" aria-label="View Agents content">Agents</a>
+                </span>
+                <a class="row-cue" href="./blog/state-of-ai-agents-2026.html" aria-label="Read: The Current State of AI Agents in 2026">↗</a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Case Studies -->
+      <section class="index-section" aria-labelledby="case-studies-title">
+        <div class="section-sidebar">
+          <h2 class="section-heading" id="case-studies-title">Case studies</h2>
+        </div>
+        <div class="section-body">
+          <ul class="writing-list">
+            <li class="content-row">
+              <span class="date">Meeple</span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/meeple.html">
+                    <span class="row-title">Enabling sales reps to follow up with custom pages for their leads</span>
+                  </a>
+                  <a class="row-topic" href="./topics/gtm.html" aria-label="View GTM content">GTM</a>
+                </span>
+                <a class="row-cue" href="./blog/meeple.html" aria-label="Read Meeple case study">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date">SKILL.md</span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/nick.html">
+                    <span class="row-title">Building a meta-skill to help non-technical teammates ship high-quality skills &amp; plugins</span>
+                  </a>
+                  <a class="row-topic" href="./topics/agents.html" aria-label="View Agents content">Agents</a>
+                </span>
+                <a class="row-cue" href="./blog/nick.html" aria-label="Read meta-skill case study">↗</a>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date">LLM evals</span>
+              <span class="row-content">
+                <span class="row-main">
+                  <a class="row-title-link" href="./blog/cat.html">
+                    <span class="row-title">AI enablement: improving prompting and evaluating outputs across LLMs with Vellum</span>
+                  </a>
+                  <a class="row-topic" href="./topics/enablement.html" aria-label="View Enablement content">Enablement</a>
+                </span>
+                <a class="row-cue" href="./blog/cat.html" aria-label="Read LLM evals case study">↗</a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 3: Projects -->
+      <section class="index-section" aria-labelledby="projects-title">
+        <div class="section-sidebar">
+          <h2 class="section-heading" id="projects-title">Projects</h2>
+        </div>
+        <div class="section-body">
+          <ul class="projects-grid">
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🧠</span>
+                <a class="project-link" href="https://github.com/marinatrajk/assistant-benchmark" target="_blank" rel="noopener noreferrer">Best AI Agent</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Open, evidence-reviewed benchmarks for AI assistants.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">👾</span>
+                <a class="project-link" href="https://github.com/marinatrajk/tiny-world" target="_blank" rel="noopener noreferrer">Tiny World</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">A tiny 3D town with six big personalities controlled by Jev.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">📐</span>
+                <a class="project-link" href="https://github.com/marinatrajk/cad-drawing-ai" target="_blank" rel="noopener noreferrer">CAD Drawing AI</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">AI-powered 3D STEP to 2D DXF manufacturing drawing generator.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">💼</span>
+                <a class="project-link" href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek AI</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">An AI career coach that stays with you through the search, the offer, and every promotion after.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🖊️</span>
+                <a class="project-link" href="https://voicepen.ai/" target="_blank" rel="noopener noreferrer">Voicepen AI</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Convert audio, podcasts, webinars, and voice notes into structured blog posts using AI.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🏢</span>
+                <a class="project-link" href="https://empireai.co/" target="_blank" rel="noopener noreferrer">Empire AI</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Optimize office layouts and workspace experiences with occupancy intelligence and recommendation algorithms.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Agent Tools -->
+      <section class="index-section" aria-labelledby="agent-tools-title">
+        <div class="section-sidebar">
+          <h2 class="section-heading" id="agent-tools-title">Agent Tools</h2>
+        </div>
+        <div class="section-body">
+          <ul class="projects-grid">
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">📊</span>
+                <a class="project-link" href="https://github.com/marinatrajk/geo-audit" target="_blank" rel="noopener noreferrer">GEO Audit</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Audit how AI models answer category questions and whether your brand shows up.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🛠️</span>
+                <a class="project-link" href="https://github.com/marinatrajk/ai-hero-engineer-kit" target="_blank" rel="noopener noreferrer">AI Hero Engineer Kit</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Five engineering skills for agents, one plugin install.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🎁</span>
+                <a class="project-link" href="https://github.com/marinatrajk/assistant-wrapped" target="_blank" rel="noopener noreferrer">Assistant Wrapped</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Spotify-Wrapped-style year-in-review for your Vellum assistant.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🎙️</span>
+                <a class="project-link" href="https://github.com/marinatrajk/telegram-voice-transcribe" target="_blank" rel="noopener noreferrer">Telegram Voice Transcribe</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Transcribe Telegram voice notes into your assistant conversation.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">✨</span>
+                <a class="project-link" href="https://github.com/marinatrajk/originkit" target="_blank" rel="noopener noreferrer">OriginKit</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Browse and import animated components from Originkit free library of 50 animated components via MCP.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">🌿</span>
+                <a class="project-link" href="https://github.com/marinatrajk/git-workflow" target="_blank" rel="noopener noreferrer">Git Workflow</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Git workflow tools for Vellum: branch management, PR creation/review/merge, diffs, logs, and changelog generation.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">📣</span>
+                <a class="project-link" href="https://github.com/marinatrajk/marketing-expert" target="_blank" rel="noopener noreferrer">Marketing Expert</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">Vellum assistant plugin: an on-demand full-stack marketing expert (hook + tools + playbook skills) for any business, B2B or B2C.</p>
+            </li>
+            <li class="project-card">
+              <div class="project-card-header">
+                <span class="project-emoji">💸</span>
+                <a class="project-link" href="https://github.com/marinatrajk/llm-cost-optimizer" target="_blank" rel="noopener noreferrer">LLM Cost Optimizer</a>
+                <span class="project-arrow">↗</span>
+              </div>
+              <p class="project-desc">A Vellum skill that analyzes and reduces LLM spend by mapping call-site overrides to managed model profiles.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Bookclub -->
+      <section class="index-section" aria-labelledby="bookclub-title">
+        <div class="section-sidebar">
+          <h2 id="bookclub-title" class="section-heading">Bookclub</h2>
+        </div>
+        <div class="section-body">
+          <ul class="writing-list finds-list">
+            <li class="content-row">
+              <span class="date">Matt Haig</span>
+              <span class="row-content">
+                <span class="row-main">
+                  <span class="row-title">The Midnight Library</span>
+                </span>
+              </span>
+            </li>
+            <li class="content-row">
+              <span class="date">Paulo Coelho</span>
+              <span class="row-content">
+                <span class="row-main">
+                  <span class="row-title">The Alchemist</span>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer Navigation -->
+    <nav class="nav" aria-label="Footer navigation">
+      <a href="#">rss</a>
+      <a href="https://x.com/marinatrajk" target="_blank" rel="noopener noreferrer">twitter</a>
+      <a href="https://www.linkedin.com/in/marinatrajkovska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://github.com/marinatrajk" target="_blank" rel="noopener noreferrer">github</a>
+    </nav>
+  </main>
+
+  <script>
+    const lightbox = document.querySelector(".snapshot-lightbox");
+    const lightboxImg = lightbox?.querySelector("img");
+    const closeBtn = lightbox?.querySelector(".snapshot-lightbox-close");
+
+    document.querySelectorAll(".snapshot").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const img = btn.querySelector("img");
+        if (!lightbox || !lightboxImg || !img) return;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.showModal();
+      });
+    });
+
+    closeBtn?.addEventListener("click", () => lightbox?.close());
+    lightbox?.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.close();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Nick: Meta-Skill for Building Skills &amp; Plugins | Marina Trajkovska</title>
+  <meta name="description" content="How designing a meta-skill unlocked a non-technical colleague to author reliable, production-ready agent skills and plugins independently.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Building a meta-skill to help non-technical teammates ship high-quality skills &amp; plugins</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · SKILL.md</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a>
+          <a class="post-topic" href="../topics/enablement.html">Enablement</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>How designing a meta-skill unlocked a non-technical colleague to author reliable, production-ready agent skills and plugins independently.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="context">Context</h2>
+          <p>
+            Nick Zeeb, Vellum’s GTM content lead, isn’t an engineer, and that was the point. When he wanted to build his first agent skill, he hit the wall every non-technical builder hits: skills look simple from the outside, just prompts and files, but making one reliable means knowing where models actually break. Instructions drift. Context gets ignored. Steps fail silently. That knowledge usually lives with the people who’ve already shipped, which is exactly who a non-technical builder doesn’t have.
+          </p>
+
+          <h2 id="designing-the-meta-skill">Designing the meta-skill</h2>
+          <p>
+            So instead of building skills for Nick, we built a skill for building skills. The meta-skill distills the guardrails experienced builders apply by hand into five rules:
+          </p>
+          <ol>
+            <li><strong>Triggers written in the user’s words.</strong> If a skill describes itself in its own terms (“manage lead pipelines”) instead of the way a user would ask for it (“score this inbound lead”), the model never invokes it.</li>
+            <li><strong>Warnings at the point of action.</strong> Gotchas and destructive-action warnings live inline at the step they apply to, not in a footnote at the end. By line 240, the model has forgotten line 10.</li>
+            <li><strong>Checkpoints between steps.</strong> Multi-step skills pause and verify state before continuing, which is what stops runaway execution.</li>
+            <li><strong>Branching where the decision happens.</strong> If/then logic sits inside the step it belongs to, not in a centralized error-handling section the model won’t scan ahead to read.</li>
+            <li><strong>A definition of done.</strong> Every skill ends with a clear completion signal, so builds stop when the work is finished instead of looping or trailing off in an ambiguous state.</li>
+          </ol>
+          <p>
+            The meta-skill walks the builder through the whole arc: scope the task, draft against the five rules, then stress-test the result against the cases where it’s most likely to fall apart. Nick never had to learn the underlying machinery. The guardrails were the interface.
+          </p>
+
+          <h2 id="results">Results</h2>
+          <p>
+            Using the meta-skill, Nick shipped a lead-scoring skill on his own, no engineering time required, and cut inbound triage from 3 hours to 20 minutes. The bigger unlock goes beyond Nick: the five rules turned a thing only experienced builders could do into something anyone on the team can do. Domain knowledge is now enough to produce a production-ready agent skill, which means the people closest to the problem can solve it directly.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

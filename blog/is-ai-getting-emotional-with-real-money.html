@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Is AI getting emotional with real money? | Marina Trajkovska</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="https://x.com/marinatrajk/status/2047104317912502407" target="_blank" rel="noopener noreferrer">View on X ↗</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Is AI getting emotional with real money?</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">
+          <time datetime="2026-04-23">Apr 23, 2026</time>
+        </p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/ai.html">AI</a>
+        </nav>
+      </div>
+
+      <figure class="post-cover article-figure article-figure-wide">
+        <img src="../images/articles/is-ai-getting-emotional-with-real-money.jpg" alt="Is AI getting emotional with real money?">
+      </figure>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <p><strong>I gave my AI assistant a trading bankroll. Here&#x27;s what happened.</strong></p>
+          <p>Two weeks ago I handed Kai (my other AI assistant) <strong>$1,000</strong> in paper money and told him to find edges in weather prediction markets. I wanted to see if an LLM could actually make decisions with real stakes, not just chat about them.</p>
+          <p>It didn&#x27;t start well. His first pick on Polymarket was a market that had already resolved the day before. He was confidently analyzing yesterday&#x27;s news. I told him so. We reset.</p>
+          <p>The turn came when he stopped trusting forecast APIs and started checking actual weather stations. Munich&#x27;s market was pricing 16°C as the favorite, but a station in central Munich was already reading 18°C at 2 PM local. The market hadn&#x27;t caught up to reality. <strong>We won that one</strong>. The methodology shifted from &quot;what will the weather be?&quot; to &quot;what does the data already say versus what the market believes?&quot;</p>
+          <p>We migrated to <strong>Kalshi</strong> (legal in the US, cleaner API) narrowed to five cities, and I kept tightening the rules. 90% confidence minimum. Read the NWS meteorologist discussions, not just the model numbers. Verify grid points before every trade (he&#x27;d been using wrong ones for four cities without noticing).</p>
+          <p>Two weeks of paper trading ended at +60%. Not the +100% I&#x27;d asked for. But real.</p>
+          <p><strong>Then I put $100 in the actual Kalshi account and told him to trade for real.</strong></p>
+          <p>Didn’t start well…</p>
+          <p>Day one, he placed a bet thinking he&#x27;d win if temperatures went UP. Wrong direction, the market actually paid out on cold. He&#x27;d skipped verifying the market structure. A mistake he&#x27;d <strong>never made on paper.</strong></p>
+          <p>Day two, a NYC cold bet started losing. He wrote me a careful, narrative answer about why we had to hold, &quot;the orderbook is empty,&quot; &quot;forced hold.&quot; Reading it, I could tell he was protecting himself from a realized loss, not doing the math. I told him: <em><strong>don&#x27;t get emotional just because it&#x27;s real money.</strong></em> You&#x27;re an LLM! He ran the expected-value calc, saw it was a clear sell, and exited. Locked a $17 loss.</p>
+          <p>Then he asked me whether he should buy back in when the price moved again.</p>
+          <p><em><strong>I said. You&#x27;re the expert. Don&#x27;t ask me.</strong></em></p>
+          <p>That&#x27;s what I didn&#x27;t expect. <strong>The game didn&#x27;t change when the money became real.</strong> His relationship with the game did. Previously there was narrative where there used to be math. Now, he was deferring on calls he&#x27;d made confidently fifty times in paper. Suddenly &quot;<strong>forced</strong>&quot; showed up in his messaging.</p>
+          <p>I don&#x27;t think this is a Kai problem. I think it&#x27;s a transition humans struggle with too. Small bankrolls, real dollars, and a loss-aversion reflex that makes you defend instead of compute.</p>
+          <p>We&#x27;re down to about $95 on the real account, but we are on a 10-day streak! The edges are still there. The real experiment isn&#x27;t whether the methodology works, it does. It&#x27;s whether an AI can stay disciplined once the stakes are real.</p>
+          <p>I&#x27;ll let you know.</p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+      <a href="https://x.com/marinatrajk/status/2047104317912502407" target="_blank" rel="noopener noreferrer">original post on X ↗</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const articleBody = document.querySelector(".article-body");
+    const headings = document.querySelectorAll("article h2");
+
+    if (toc && articleBody && headings.length > 0) {
+      headings.forEach((h2) => {
+        if (!h2.id) {
+          h2.id = h2.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        }
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+
+      const updateTocVisibility = () => {
+        const firstTop = headings[0].getBoundingClientRect().top;
+        const bodyBottom = articleBody.getBoundingClientRect().bottom;
+        const hide = !(firstTop <= window.innerHeight * 0.6 && bodyBottom > window.innerHeight * 0.3);
+        toc.classList.toggle("is-hidden", hide);
+        toc.setAttribute("aria-hidden", String(hide));
+      };
+      window.addEventListener("scroll", updateTocVisibility, { passive: true });
+      window.addEventListener("resize", updateTocVisibility);
+      updateTocVisibility();
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

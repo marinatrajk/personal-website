@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>WTF Are Plugins? | Marina Trajkovska</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="https://x.com/marinatrajk/status/2070219585303798236" target="_blank" rel="noopener noreferrer">View on X ↗</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>WTF Are Plugins?</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">
+          <time datetime="2026-06-25">Jun 25, 2026</time>
+        </p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a><a class="post-topic" href="../topics/product.html">Product</a>
+        </nav>
+      </div>
+
+      <figure class="post-cover article-figure article-figure-wide">
+        <img src="../images/articles/wtf-are-plugins.jpg" alt="WTF Are Plugins?">
+      </figure>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <p>As AI agents move from novelty to daily infrastructure, the question shifts from what the assistant can do out of the box to how far you can extend it. You can extend an assistant on your own by writing skills in plain language. But you can also draw on what others have built. Plugins are how your assistant gains capabilities from others, and understanding them changes how much you can get out of the tool.</p>
+          <p>This guide covers what a plugin is, how it differs from a skill, what plugins are good for, how to install one, and how to build your own without writing code.</p>
+          <h2 id="what-is-a-plugin">What is a plugin?</h2>
+          <p>A plugin is a bundle of hooks, tools, skills, and more, packaged into a single installable unit that extends what your agent can do.</p>
+          <p>That extension usually shows up in one of two ways. A plugin can add a new tool the assistant uses on demand, like looking up live flight prices when you&#x27;re planning a trip. Or it can make the assistant do something automatically at the right moment, without being asked, like running a quick step every time you send a message before it gets to work.</p>
+          <p>The key point is that a plugin is working software, not just instructions. It becomes part of how the assistant runs. And although it&#x27;s software, you never have to write the code yourself. You install plugins from a built-in catalog, and you can have your assistant build new ones for you. Both are covered below.</p>
+          <h2 id="how-a-plugin-differs-from-a-skill">How a plugin differs from a skill</h2>
+          <p>A <strong>skill</strong> is a set of written instructions, in plain language, that teaches your assistant how you want a recurring task handled, such as the steps and format for your weekly competitive review. Most often it shapes how the assistant uses abilities it already has, though a skill can also include small scripts that extend what it can do.</p>
+          <p>A <strong>plugin</strong> is a bundle that adds an ability the assistant didn&#x27;t have, or makes it act automatically. In short: a skill teaches your assistant to work your way, while a plugin equips it to do something new. If the assistant can already do the task and you just want it done a certain way, you want a skill; if it can&#x27;t do the thing at all, you want a plugin.</p>
+          <p>In short: a skill teaches your assistant to work your way, while a plugin equips it to do something new. As a rule of thumb, if the assistant can already do the task and you just want it done a certain way, you want a skill; if it can&#x27;t do the thing at all, you want a plugin. The two aren&#x27;t mutually exclusive, though. A plugin is the broader concept and can bundle skills along with its other pieces, so installing one can also teach your assistant new routines at the same time.</p>
+          <h2 id="what-plugins-are-good-for">What plugins are good for</h2>
+          <p>There are three things plugins are particularly well suited to.</p>
+          <p><strong>1. Changing how the agent behaves.</strong> When you send a message, your assistant runs through a repeatable cycle to handle it: read what you said, decide what to do, act, and respond. That cycle is called <strong>the agent loop</strong>. A plugin can step into that loop at a specific point and change what happens next, using entry points called hooks. For example, a plugin might run a quick check every time you send a message, before the assistant starts, to clean up or add context.</p>
+          <p>For example, a plugin might run a quick check every time you send a message, before the assistant starts, to clean up or add context. This isn&#x27;t a tool the assistant calls on demand. It&#x27;s a change to how the assistant operates, applied automatically, every turn.</p>
+          <p><strong>2. Adding a bundle of skills.</strong> A single skill teaches your assistant one routine. But sometimes a set of routines belongs together, because they share a goal or a way of working. A plugin can package several skills at once and install them together, so the assistant picks up a whole area of competence in one step rather than learning one skill at a time.</p>
+          <p><strong>3. Adding new tools.</strong> A plugin can give the assistant a new tool it uses on demand, like looking up live flight prices when you&#x27;re planning a trip. The assistant couldn&#x27;t do it before, now it can, and it uses the tool when the task calls for it.</p>
+          <p>These three overlap in practice, and a single plugin often combines them. A plugin might change how the agent behaves, ship a bundle of skills, and add a new tool, all at once. That&#x27;s the advantage of the bundle: one install can extend the assistant in several ways at the same time.</p>
+          <h2 id="installing-a-plugin">Installing a plugin</h2>
+          <p>Vellum is curating a registry of plugins, that the assistant knows how to contact and install from.</p>
+          <p>The most direct route is to ask. A request such as:</p>
+          <blockquote><p>&quot;Show me the available plugins&quot;</p></blockquote>
+          <p>followed by:</p>
+          <blockquote><p>&quot;Install the marketing expert plugin&quot;</p></blockquote>
+          <p>The assistant then retrieves the plugin from the official catalog and sets it up.</p>
+          <h2 id="building-your-own-plugin">Building your own plugin</h2>
+          <p>Creating a plugin does not require knowing how to code. The technical work is handled by your assistant, guided by a dedicated <strong>plugin builder</strong> skill that encodes the full process of designing, building, and packaging a plugin.</p>
+          <p><strong>1. Describe the objective.</strong> State what the plugin should do, in your own words. &quot;Save every link I send into a reading list,&quot; or &quot;Connect to our internal ticketing system.&quot; Ordinary language is sufficient.</p>
+          <p><strong>2. Answer a short set of questions.</strong> The plugin builder asks only what it needs: what job the plugin performs, whether it adds a tool or runs automatically in the background, whether it requires a login or credential to connect to anything, and what the finished plugin should be called.</p>
+          <p><strong>3. Let it build.</strong> Working from your answers, the assistant writes the plugin, establishes the correct file structure, and packages it properly.</p>
+          <p><strong>4. Test it.</strong> Install the new plugin exactly as you would one from the catalog, restart once, and use it. If something is wrong, describe the problem in plain language and the assistant revises it.</p>
+          <p><strong>5. Share it, optionally.</strong> A plugin that proves useful can be submitted to the shared catalog for others to install. The assistant knows how to prepare it for that as well.</p>
+          <p>Since Vellum is an open source project, you can publish your plugins to the Vellum plugin marketplace. Learn more about plugin distribution <a href="https://www.vellum.ai/docs/extensibility/distribution" target="_blank" rel="noopener noreferrer">here</a>.</p>
+          <h2 id="the-takeaway">The takeaway</h2>
+          <p>Plugins are how an assistant stops being fixed in place. Out of the box it can do a great deal, but plugins are what let it reach new systems, take on specialized jobs, and act on its own. You install them from an existing catalog, you can build new ones through conversation alone, and you never have to touch code to do either.</p>
+          <p>You are not limited to what your assistant could do on the day you started using it, and a plugin is usually the shortest path to the next thing you need it to do.</p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+      <a href="https://x.com/marinatrajk/status/2070219585303798236" target="_blank" rel="noopener noreferrer">original post on X ↗</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const articleBody = document.querySelector(".article-body");
+    const headings = document.querySelectorAll("article h2");
+
+    if (toc && articleBody && headings.length > 0) {
+      headings.forEach((h2) => {
+        if (!h2.id) {
+          h2.id = h2.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        }
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+
+      const updateTocVisibility = () => {
+        const firstTop = headings[0].getBoundingClientRect().top;
+        const bodyBottom = articleBody.getBoundingClientRect().bottom;
+        const hide = !(firstTop <= window.innerHeight * 0.6 && bodyBottom > window.innerHeight * 0.3);
+        toc.classList.toggle("is-hidden", hide);
+        toc.setAttribute("aria-hidden", String(hide));
+      };
+      window.addEventListener("scroll", updateTocVisibility, { passive: true });
+      window.addEventListener("resize", updateTocVisibility);
+      updateTocVisibility();
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

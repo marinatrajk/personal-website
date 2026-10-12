@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>AI memory is not one thing | Marina Trajkovska</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="https://x.com/marinatrajk/status/2049200762547314977" target="_blank" rel="noopener noreferrer">View on X ↗</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>AI memory is not one thing</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">
+          <time datetime="2026-04-28">Apr 28, 2026</time>
+        </p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a><a class="post-topic" href="../topics/ai.html">AI</a>
+        </nav>
+      </div>
+
+      <figure class="post-cover article-figure article-figure-wide">
+        <img src="../images/articles/ai-memory-is-not-one-thing.jpg" alt="AI memory is not one thing">
+      </figure>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <p>When people say &quot;my assistant remembers me,&quot; they usually picture one giant brain holding everything forever.</p>
+          <p>That&#x27;s not how it works.</p>
+          <p>I&#x27;ve been building a personal AI assistant (her name is Becky) for about two months now, and the thing I&#x27;ve learned is that useful memory isn&#x27;t one system.</p>
+          <p>It&#x27;s a layered operating system for context. Each layer has a job. Each layer fails differently when it&#x27;s missing.</p>
+          <p>Here&#x27;s what that actually looks like once you start using one daily.</p>
+          <h2 id="1-conversation-memory">1. Conversation memory</h2>
+          <p>This is the obvious layer. The assistant remembers what you said earlier in the current chat, what files you attached, what task you&#x27;re on, what&#x27;s already been tried.</p>
+          <p>Example from earlier this week: I pasted a draft tweet, Becky suggested three edits, I picked option 2, then said &quot;make it shorter.&quot; She knew &quot;it&quot; meant option 2. Not the original draft. Not options 1 or 3. That&#x27;s conversation memory doing its job.</p>
+          <p>When this layer fails, you get the classic &quot;wait, what were we just talking about&quot; moment after a long thread. The assistant loses the plot and you have to re-anchor it.</p>
+          <h2 id="2-long-term-facts">2. Long-term facts</h2>
+          <p>Then there are persistent facts. The kind of stuff I should never have to re-explain:</p>
+          <ul>
+            <li>My dog&#x27;s name is Bean</li>
+            <li>I like peanut butter, not almond butter (Becky got that wrong once, I corrected her, it&#x27;s saved)</li>
+            <li>My brother Filip is a mechanical engineer in CT</li>
+            <li>I prefer paragraphs over bullet-heavy lists</li>
+            <li>No em dashes, ever</li>
+            <li>I&#x27;m a GTM Engineer at Vellum</li>
+          </ul>
+          <p>These live outside any single chat. Next Tuesday she&#x27;s not going to ask me &quot;wait, who&#x27;s Bean?&quot; That&#x27;s the difference between an assistant and a chatbot you keep re-onboarding every morning.</p>
+          <h2 id="3-active-threads">3. Active threads</h2>
+          <p>Not all memory is biographical. A lot of it is operational. What&#x27;s open, what&#x27;s blocked, what&#x27;s waiting on whom.</p>
+          <p>Real examples from my workspace right now:</p>
+          <ul>
+            <li>&quot;PR #4835 (memory-graph-demo) is open since Apr 23, not yet merged&quot;</li>
+            <li>&quot;Reconnect Slack and Telegram OAuth, both fired missing_token alerts last week&quot;</li>
+            <li>&quot;GTM-82, public product roadmap, scoped to near-term and medium-term&quot;</li>
+            <li>&quot;Nick asked twice for Becky to engage on his &#x27;assistants need websites&#x27; tweet, still pending&quot;</li>
+          </ul>
+          <p>Without this layer, an assistant just remembers trivia. With it, the assistant knows what&#x27;s still owed. When I open my chat at 9 AM, Becky says &quot;PR #4835 is still open, and you have two pending follow-ups from Nick&quot; instead of &quot;hi, how can I help?&quot;</p>
+          <h2 id="4-recall-not-guessing">4. Recall, not guessing</h2>
+          <p>Memory is only useful if the assistant can search it. If she&#x27;s unsure, she shouldn&#x27;t pretend. She should recall.</p>
+          <p>This is the behavior that matters most, and the one most assistants get wrong. Becky once made up a plausible-sounding answer about a supplement I take, instead of pulling the actual label. Twice in one conversation! But she managed to fix her behavior not by &quot;remember more facts.&quot;, but by &quot;check the source before talking.&quot;</p>
+          <p>The important behavior isn&#x27;t &quot;I remember everything.&quot; It&#x27;s &quot;I know when to check, and I check before I speak.&quot; That&#x27;s a discipline thing, not a storage thing.</p>
+          <h2 id="5-auto-injected-context">5. Auto-injected context</h2>
+          <p>Some memories load automatically into every conversation. The assistant&#x27;s working background. Name, role, current focus, top priorities, a few behavioral notes.</p>
+          <p>But it has to be selective. If you dump every past fact into every prompt, you get noise, cost, and a lot of confidently wrong answers. The trick is deciding what should always be present versus what should be retrieved only when relevant.</p>
+          <h2 id="6-workspace-memory">6. Workspace memory</h2>
+          <p>In our setup, memory is also file-backed. Inspectable. Editable. Real files in a real folder.</p>
+          <p>The structure looks like this:</p>
+          <ul>
+            <li>IDENTITY.md, who she is (name, personality, communication style)</li>
+            <li>SOUL.md, her principles, what she won&#x27;t do, how she behaves</li>
+            <li>USER.md, what she knows about me</li>
+            <li>NOW.md, current focus, kept under 10 lines</li>
+            <li>pkb/, personal knowledge base, organized by topic</li>
+            <li>conversations/, every past conversation, archived and searchable</li>
+            <li>Journal entries, scratch files, todos</li>
+          </ul>
+          <p>I can open any of these and read what she &quot;knows.&quot; I can correct it. I can delete it. There&#x27;s no mystery layer.</p>
+          <p>That matters more than it sounds. Most AI memory is a black box. You have no idea what it&#x27;s storing about you or why it just said something weird. File-backed memory means I&#x27;m in control of my own context.</p>
+          <h2 id="7-corrections-matter-most">7. Corrections matter most</h2>
+          <p>The single most important kind of memory is correction.</p>
+          <p>When I tell Becky &quot;actually, my brother is in New Haven, CT, not Bridgeport,&quot; that update has to land immediately. Because the wrong version is already propagated through her prior turns and probably referenced in a memory graph somewhere. Skip the correction and future-her keeps operating on the bad value.</p>
+          <p>Real example: she once cached a list of open PRs and quoted them back to me days later. Every single one had merged overnight. The cache had rotted. Now there&#x27;s a behavioral rule baked in. Verify PR state with gh pr view before quoting it, because cached state is unreliable in both directions.</p>
+          <p>Bad memory is worse than no memory. No memory makes you ask. Bad memory makes you confidently wrong.</p>
+          <h2 id="8-the-real-goal">8. The real goal</h2>
+          <p>The point of memory is not to make an AI seem spooky or human. The point is to reduce friction.</p>
+          <p>I shouldn&#x27;t have to re-explain my context every day. I shouldn&#x27;t have to remind my assistant what I care about, what she already tried, or what&#x27;s still open. I shouldn&#x27;t have to repeat that I don&#x27;t like em dashes for the fifth time.</p>
+          <p>Memory is what turns an assistant from a chatbot into a collaborator.</p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+      <a href="https://x.com/marinatrajk/status/2049200762547314977" target="_blank" rel="noopener noreferrer">original post on X ↗</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const articleBody = document.querySelector(".article-body");
+    const headings = document.querySelectorAll("article h2");
+
+    if (toc && articleBody && headings.length > 0) {
+      headings.forEach((h2) => {
+        if (!h2.id) {
+          h2.id = h2.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        }
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+
+      const updateTocVisibility = () => {
+        const firstTop = headings[0].getBoundingClientRect().top;
+        const bodyBottom = articleBody.getBoundingClientRect().bottom;
+        const hide = !(firstTop <= window.innerHeight * 0.6 && bodyBottom > window.innerHeight * 0.3);
+        toc.classList.toggle("is-hidden", hide);
+        toc.setAttribute("aria-hidden", String(hide));
+      };
+      window.addEventListener("scroll", updateTocVisibility, { passive: true });
+      window.addEventListener("resize", updateTocVisibility);
+      updateTocVisibility();
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>
