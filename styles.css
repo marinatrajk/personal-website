@@ -412,6 +412,10 @@ pre code {
   transition: background-color 0.15s ease;
 }
 
+.writing-list.finds-list li {
+  grid-template-columns: 8.5rem 1fr;
+}
+
 .writing-list li:first-child {
   padding-top: 0.1rem;
 }
@@ -1054,7 +1058,8 @@ article .strategy-table td:last-child {
     max-width: 92vw;
     max-height: 82vh;
   }
-  .writing-list li {
+  .writing-list li,
+  .writing-list.finds-list li {
     grid-template-columns: 1fr;
     gap: 0.2rem;
     padding: 0.65rem 0;
