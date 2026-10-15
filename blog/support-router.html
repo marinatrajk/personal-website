@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>How We Cut Customer Support Response Times by 80%+ with an AI Support Router | Marina Trajkovska</title>
+  <meta name="description" content="How we built a 4-way AI support router, a 1,179-chunk Docs + Discord vector knowledge base, and the @Helper Discord bot to answer customer questions in under 3 seconds.">
+  <meta name="author" content="Marina Trajkovska">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marina Trajkovska">
+  <meta property="og:title" content="How We Cut Customer Support Response Times by 80%+ with an AI Support Router | Marina Trajkovska">
+  <meta property="og:description" content="How we built a 4-way AI support router, a 1,179-chunk Docs + Discord vector knowledge base, and the @Helper Discord bot to answer customer questions in under 3 seconds.">
+  <meta property="og:image" content="../images/articles/support-router-console.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marinatrajk">
+  <meta name="twitter:creator" content="@marinatrajk">
+  <meta name="twitter:title" content="How We Cut Customer Support Response Times by 80%+ with an AI Support Router | Marina Trajkovska">
+  <meta name="twitter:description" content="How we built a 4-way AI support router, a 1,179-chunk Docs + Discord vector knowledge base, and the @Helper Discord bot to answer customer questions in under 3 seconds.">
+  <meta name="twitter:image" content="../images/articles/support-router-console.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>How We Cut Customer Support Response Times by 80%+ with an AI Support Router</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · Support router</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a>
+          <a class="post-topic" href="../topics/ai.html">AI</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>Giving customers accurate answers in under 3 seconds across both our web app and Discord, while immediately routing human-needed issues to our team in Slack.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="the-challenge">1. The Challenge</h2>
+          <p>
+            As Vellum's community grew, customer questions were coming in from two places at once: our web app and our 16-channel Discord community.
+          </p>
+          <p>
+            We noticed two major bottlenecks:
+          </p>
+          <ol>
+            <li><strong>Repeated Questions:</strong> Around 80% of questions were already answered either in the official Vellum Docs (<code>vellum.ai/docs</code>) or buried inside older Discord threads (in <code>#users-helping-users</code>, <code>#bugs</code>, and <code>#feedback</code>). Yet our team still had to look them up and reply manually.</li>
+            <li><strong>Slow Triage for Real Issues:</strong> When a user actually needed a human, such as for a production issue or a billing problem, their message sat in the same queue as routine <em>"How do prepaid credits work?"</em> or <em>"How do I pair a second device?"</em> questions.</li>
+          </ol>
+          <p>
+            Our goal was simple: <strong>give customers accurate answers in under 3 seconds</strong> on both the web and right inside Discord, while <strong>immediately routing human-needed issues to our team in Slack</strong>.
+          </p>
+
+          <hr>
+
+          <h2 id="the-architecture">2. The Architecture: A 4-Way Support Router</h2>
+          <p>
+            Instead of building a single generic chatbot, we designed a <strong>Customer Support Chatbot Router</strong> that classifies every incoming message first and sends it down the right path:
+          </p>
+
+          <figure class="article-figure article-figure-wide">
+            <img src="../images/articles/support-router-architecture.png" alt="Customer Support Chatbot Router Architecture">
+            <figcaption>4-way Customer Support Chatbot Router architecture in Vellum.</figcaption>
+          </figure>
+
+          <ol>
+            <li>
+              <strong>Classifier Node (<code>gemini-3.5-flash-lite</code>):</strong> Reads the user's message and picks one of four routes:
+              <ul>
+                <li><strong><code>billing_payments</code>:</strong> Pricing, prepaid credits, invoices, and Agentic Payments.</li>
+                <li><strong><code>product_help</code>:</strong> Setup, skills, memory, schedules, channels, and self-hosting.</li>
+                <li><strong><code>account_management</code>:</strong> Permissions, privacy, OAuth connections, and device pairing.</li>
+                <li><strong><code>escalation</code>:</strong> Frustrated users, bug/outage reports, or anyone asking to talk to a human.</li>
+              </ul>
+            </li>
+            <li><strong>Knowledge Base Search (for the first 3 routes):</strong> Searches our vectorized knowledge base with a boost toward the matched category so billing questions prioritize billing docs and product questions prioritize product guides.</li>
+            <li><strong>Generate Response (<code>gemini-3.8-flash</code>):</strong> Writes a clear, helpful answer with direct links to the documentation sources.</li>
+            <li><strong>Escalation Agent → Slack:</strong> When a message hits the <code>escalation</code> branch, the bot reassures the customer that the team is on it, and simultaneously posts a structured triage card in our internal Slack triage channel with a severity tag (<code>LOW</code> to <code>URGENT</code>), a summary, and a recommended next step.</li>
+          </ol>
+
+          <hr>
+
+          <h2 id="building-the-knowledge-base">3. Building the Knowledge Base (Docs + Discord)</h2>
+          <p>
+            A RAG chatbot is only as good as the knowledge it searches. We combined two sources into a single <strong>1,179-chunk vector database</strong> powered by Google Cloud Vertex AI (<code>gemini-embedding-001</code>):
+          </p>
+
+          <figure class="article-figure">
+            <svg viewBox="0 0 740 190" width="100%" role="img" aria-label="Diagram showing Vellum Docs and Vellum Discord pipelines merging into Vertex AI Embeddings" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 9 5 L 0 9 z" fill="#7d786f"/>
+                </marker>
+              </defs>
+              <!-- Row 1: Docs -->
+              <rect x="16" y="22" width="190" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="111" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Vellum Docs</text>
+              <text x="111" y="64" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7d786f">(93 Markdown Pages)</text>
+
+              <line x1="206" y1="50" x2="252" y2="50" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+              <rect x="256" y="22" width="210" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="361" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Split by Section Headings</text>
+              <text x="361" y="64" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7d786f">(899 Doc Chunks)</text>
+
+              <!-- Row 2: Discord -->
+              <rect x="16" y="110" width="190" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="111" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Vellum Discord</text>
+              <text x="111" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7d786f">(419 Community Threads)</text>
+
+              <line x1="206" y1="138" x2="252" y2="138" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+              <rect x="256" y="110" width="210" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="361" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Gemini Q&amp;A Cleanup</text>
+              <text x="361" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7d786f">(280 Clean Q&amp;A Chunks)</text>
+
+              <!-- Converging lines to VectorDB -->
+              <path d="M 466 50 L 495 50 L 495 84 L 520 84" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow)"/>
+              <path d="M 466 138 L 495 138 L 495 104 L 520 104" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+              <rect x="524" y="64" width="200" height="60" rx="6" fill="#ffffff" stroke="#c24e2b" stroke-width="1.5"/>
+              <text x="624" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Vertex AI Embeddings</text>
+              <text x="624" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#c24e2b">(1,179 Total Chunks)</text>
+            </svg>
+          </figure>
+
+          <ol>
+            <li>
+              <strong>Scraping Official Documentation:</strong>
+              <ul>
+                <li>We pulled all 93 pages from <code>vellum.ai/docs/llms.txt</code> in clean Markdown format.</li>
+                <li>Rather than cutting text at arbitrary word counts (which breaks code blocks and instructions in half), we split pages cleanly by their section headings (<code>#</code>, <code>##</code>, <code>###</code>) and tagged each section by category (<code>billing_payments</code>, <code>product_help</code>, <code>account_management</code>), creating <strong>899 doc chunks</strong>.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Turning Messy Discord Threads into Clean Q&amp;As:</strong>
+              <ul>
+                <li>Real user troubleshooting happens in Discord, but raw chat logs are full of <em>"hey"</em>, <em>"any update?"</em>, and back-and-forth debugging.</li>
+                <li>We scraped threads from forum channels (<code>#bugs</code>, <code>#feature-request</code>) and reply chains from text channels (<code>#users-helping-users</code>, <code>#feedback</code>).</li>
+                <li>Before adding them to the vector database, we passed each thread through <strong><code>gemini-3.5-flash-lite</code></strong>, which filtered out small talk and rewrote the useful threads into <strong>280 clean Question &amp; Answer cards</strong>.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Keeping It Fresh with a Daily Cron Job:</strong>
+              <ul>
+                <li>We set up a daily 9:00 AM automation (<strong><code>Daily Discord Vector DB Sync</code></strong>) that checks Discord for new or updated threads, vectorizes only what changed, and reloads the chatbot automatically.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <hr>
+
+          <h2 id="saving-80-percent-response-time">4. How We Saved 80%+ on Response Time</h2>
+          <p>
+            When we first tested the chatbot, responses took <strong>14 to 18 seconds</strong>, and even typing <em>"hey"</em> took over <strong>4 seconds</strong>. From a Solutions Architect standpoint, we made four targeted changes that brought response time down to <strong>~2.5 seconds</strong>:
+          </p>
+
+          <div class="table-wrap strategy-table-wrap">
+            <table class="strategy-table">
+              <thead>
+                <tr>
+                  <th>Bottleneck</th>
+                  <th>What We Changed</th>
+                  <th>Time Saved</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Simple greetings (<code>"hey"</code>, <code>"thanks"</code>) ran the full AI pipeline</td>
+                  <td>Added an instant greeting filter before calling any LLM</td>
+                  <td><strong>4.2s → 0.001s</strong></td>
+                </tr>
+                <tr>
+                  <td>Step-by-step waiting (Classify first, then embed the search query)</td>
+                  <td>Ran the <strong>Classifier</strong> and <strong>Vector Embedding</strong> at the exact same time in parallel</td>
+                  <td><strong>~0.5s saved per message</strong></td>
+                </tr>
+                <tr>
+                  <td>Heavy "thinking" overhead on simple RAG lookups</td>
+                  <td>Used fast <strong><code>gemini-3.5-flash-lite</code></strong> for routing and turned off extra reasoning delay on <strong><code>gemini-3.8-flash</code></strong> since the exact doc chunks are already in the prompt</td>
+                  <td><strong>~10s saved per message</strong></td>
+                </tr>
+                <tr>
+                  <td>Slow external database network calls</td>
+                  <td>Loaded the normalized <code>3.2 MB</code> vector index directly into memory</td>
+                  <td><strong>Search runs in &lt; 1 millisecond</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <hr>
+
+          <h2 id="demo-and-monitoring-console">5. The Demo Chatbot &amp; Live Monitoring Console</h2>
+          <p>
+            To make it easy for our team to test the router and see what happens under the hood, we built an interactive <strong>Demo &amp; Monitoring Console</strong>:
+          </p>
+
+          <figure class="article-figure article-figure-wide">
+            <img src="../images/articles/support-router-console.png" alt="Vellum Customer Support Chatbot Demo and Live Monitoring Console">
+            <figcaption>Interactive Demo Chatbot (left) and Live Router &amp; Retrieval Inspector (right).</figcaption>
+          </figure>
+
+          <ul>
+            <li><strong>Left Pane (Customer Chat):</strong> Lets you test real customer questions or click one-tap example prompts for Billing, Product Help, Account Management, and Slack Escalation.</li>
+            <li>
+              <strong>Right Pane (Live Router Monitor &amp; Retrieval Inspector):</strong>
+              <ul>
+                <li><strong>Visual Flowchart:</strong> Lights up each node of the router diagram in real time as a message moves from <code>Chat Trigger</code> → <code>Classifier Node</code> → the chosen branch → <code>Workflow Output</code>.</li>
+                <li><strong>Latency Breakdown:</strong> Shows the exact millisecond timing for classification, vector search, and answer generation on every message.</li>
+                <li><strong>Retrieved Sources Inspector:</strong> Shows the exact 4 documentation or Discord Q&amp;A chunks that the vector search pulled, along with their similarity match score (<code>sim=0.7953</code>) and links to the source.</li>
+                <li><strong>Live Connection Controls:</strong> Displays live status badges in the top bar for <strong>Slack</strong>, <strong>Discord (<code>@Helper: Online</code>)</strong>, and the <strong>1,179 Vectorized Chunks</strong>, with one-click modals to sync Discord or fire a test alert to Slack.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr>
+
+          <h2 id="discord-helper-bot">6. Meeting Users Where They Are: The <code>@Helper</code> Discord Bot</h2>
+          <p>
+            Finally, we connected the exact same router directly to our Discord server as the <strong><code>@Helper</code></strong> bot:
+          </p>
+
+          <figure class="article-figure article-figure-wide">
+            <img src="../images/articles/support-router-discord.png" alt="Discord @Helper Bot Live Reply">
+            <figcaption>The @Helper bot answering a user question directly inside Discord with documentation citations.</figcaption>
+          </figure>
+
+          <ul>
+            <li><strong>Tag <code>@Helper</code> Anywhere:</strong> When a user tags <code>@Helper</code> in a Discord channel or thread, the bot reads the last 6 messages in that conversation for context, searches all 1,179 docs + Discord Q&amp;A chunks, and replies right in the thread with source links.</li>
+            <li><strong>Seamless Human Handoff:</strong> If a user in Discord tags <code>@Helper</code> asking to talk to a human (or reports a critical issue), <code>@Helper</code> replies politely in Discord without exposing internal Slack channel names, while posting the triage alert + a direct link to that Discord message into our Slack triage channel.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>
