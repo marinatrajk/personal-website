@@ -48,7 +48,7 @@
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-challenge">1. The Challenge</h2>
+          <h2 id="the-challenge">The Challenge</h2>
           <p>
             As Vellum's community grew, customer questions were coming in from two places at once: our web app and our 16-channel Discord community.
           </p>
@@ -65,7 +65,7 @@
 
           <hr>
 
-          <h2 id="the-architecture">2. The Architecture: A 4-Way Support Router</h2>
+          <h2 id="the-architecture">The Architecture: A 4-Way Support Router</h2>
           <p>
             Instead of building a single generic chatbot, we designed a <strong>Customer Support Chatbot Router</strong> that classifies every incoming message first and sends it down the right path:
           </p>
@@ -92,7 +92,7 @@
 
           <hr>
 
-          <h2 id="building-the-knowledge-base">3. Building the Knowledge Base (Docs + Discord)</h2>
+          <h2 id="building-the-knowledge-base">Building the Knowledge Base (Docs + Discord)</h2>
           <p>
             A RAG chatbot is only as good as the knowledge it searches. We combined two sources into a single <strong>1,179-chunk vector database</strong> powered by Google Cloud Vertex AI (<code>gemini-embedding-001</code>):
           </p>
@@ -162,7 +162,7 @@
 
           <hr>
 
-          <h2 id="saving-80-percent-response-time">4. How We Saved 80%+ on Response Time</h2>
+          <h2 id="saving-80-percent-response-time">How We Saved 80%+ on Response Time</h2>
           <p>
             When we first tested the chatbot, responses took <strong>14 to 18 seconds</strong>, and even typing <em>"hey"</em> took over <strong>4 seconds</strong>. From a Solutions Architect standpoint, we made four targeted changes that brought response time down to <strong>~2.5 seconds</strong>:
           </p>
@@ -203,7 +203,7 @@
 
           <hr>
 
-          <h2 id="demo-and-monitoring-console">5. The Demo Chatbot &amp; Live Monitoring Console</h2>
+          <h2 id="demo-and-monitoring-console">The Demo Chatbot &amp; Live Monitoring Console</h2>
           <p>
             To make it easy for our team to test the router and see what happens under the hood, we built an interactive <strong>Demo &amp; Monitoring Console</strong>:
           </p>
@@ -228,7 +228,7 @@
 
           <hr>
 
-          <h2 id="discord-helper-bot">6. Meeting Users Where They Are: The <code>@Helper</code> Discord Bot</h2>
+          <h2 id="discord-helper-bot">Meeting Users Where They Are: The <code>@Helper</code> Discord Bot</h2>
           <p>
             Finally, we connected the exact same router directly to our Discord server as the <strong><code>@Helper</code></strong> bot:
           </p>
