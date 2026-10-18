@@ -404,7 +404,7 @@ pre code {
 
 .writing-list li {
   display: grid;
-  grid-template-columns: 6rem 1fr;
+  grid-template-columns: 6.6rem 1fr;
   gap: 1rem;
   padding: 0.58rem 0;
   border-bottom: 1px solid var(--border-subtle);

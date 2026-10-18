@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Turning Meeting Notes &amp; HR Sentiment into a Founder-Led LinkedIn Engine (+30% Signups) | Marina Trajkovska</title>
+  <meta name="description" content="How I built an automated founder-led GTM engine at Odyseek combining Fathom meeting notes, bookmarks, and GPT-5 HR sentiment analysis to lift top-of-funnel signups by 30%.">
+  <meta name="author" content="Marina Trajkovska">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marina Trajkovska">
+  <meta property="og:title" content="Turning Meeting Notes &amp; HR Sentiment into a Founder-Led LinkedIn Engine (+30% Signups) | Marina Trajkovska">
+  <meta property="og:description" content="How I built an automated founder-led GTM engine at Odyseek combining Fathom meeting notes, bookmarks, and GPT-5 HR sentiment analysis to lift top-of-funnel signups by 30%.">
+  <meta property="og:image" content="../images/profile/marina-view.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marinatrajk">
+  <meta name="twitter:creator" content="@marinatrajk">
+  <meta name="twitter:title" content="Turning Meeting Notes &amp; HR Sentiment into a Founder-Led LinkedIn Engine (+30% Signups) | Marina Trajkovska">
+  <meta name="twitter:description" content="How I built an automated founder-led GTM engine at Odyseek combining Fathom meeting notes, bookmarks, and GPT-5 HR sentiment analysis to lift top-of-funnel signups by 30%.">
+  <meta name="twitter:image" content="../images/profile/marina-view.jpg">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Turning Fathom meeting notes and HR sentiment into a founder-led LinkedIn engine (+30% signups)</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · Founder-Led GTM</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/gtm.html">GTM</a>
+          <a class="post-topic" href="../topics/enablement.html">Enablement</a>
+          <a class="post-topic" href="../topics/ai.html">AI</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>How co-building an AI content workflow with Odyseek's CEO took her from social-posting anxiety to publishing 3x+ a week on LinkedIn, lifting top-of-funnel signups by ~30%.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="the-challenge">1. The Challenge</h2>
+          <p>
+            At <a href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek</a>, founder-led marketing on LinkedIn was one of our highest-leverage channels for bringing both individual users and mid-market companies into the funnel. Our CEO had deep domain expertise in the HR and career ecosystem, and she shared sharp insights constantly on internal calls and client meetings.
+          </p>
+          <p>
+            However, staring at a blank LinkedIn composer created real posting anxiety. Between running the company and taking consultative sales calls, she didn't have the bandwidth to track what was trending across HR Twitter/LinkedIn or turn her spoken thoughts into polished posts every week.
+          </p>
+
+          <hr>
+
+          <h2 id="what-we-built">2. What We Built: The Monday-Morning Founder Content Engine</h2>
+          <p>
+            Working closely with her, I built an automated workflow that captured her real voice during the week and paired it with live market sentiment every Monday morning:
+          </p>
+
+          <figure class="article-figure">
+            <svg viewBox="0 0 740 215" width="100%" role="img" aria-label="Diagram showing Fathom Meeting Notes, Saved Bookmarks, and HR Ecosystem Sentiment flowing into GPT-5 Synthesis and Monday LinkedIn Drafts" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+              <defs>
+                <marker id="arrow-gtm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 9 5 L 0 9 z" fill="#7d786f"/>
+                </marker>
+              </defs>
+              <rect x="16" y="16" width="210" height="50" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="121" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Fathom Meeting Notes</text>
+              <text x="121" y="54" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">CEO's Spoken Insights</text>
+
+              <rect x="16" y="82" width="210" height="50" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="121" y="104" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Curated Bookmarks</text>
+              <text x="121" y="120" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Links &amp; Posts Saved All Week</text>
+
+              <rect x="16" y="148" width="210" height="50" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="121" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">HR Ecosystem Sentiment</text>
+              <text x="121" y="186" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Live Web &amp; Social Signals</text>
+
+              <path d="M 226 41 L 260 41 L 260 92 L 286 92" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-gtm)"/>
+              <line x1="226" y1="107" x2="286" y2="107" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-gtm)"/>
+              <path d="M 226 173 L 260 173 L 260 122 L 286 122" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-gtm)"/>
+
+              <rect x="290" y="74" width="195" height="66" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="387" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">GPT-5 Sentiment &amp; Voice</text>
+              <text x="387" y="120" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Matches Angle + Tone</text>
+
+              <line x1="485" y1="107" x2="525" y2="107" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-gtm)"/>
+
+              <rect x="529" y="74" width="195" height="66" rx="6" fill="#ffffff" stroke="#c24e2b" stroke-width="1.5"/>
+              <text x="626" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Monday Morning Digest</text>
+              <text x="626" y="120" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c24e2b">Topics + LinkedIn Drafts</text>
+            </svg>
+          </figure>
+
+          <ol>
+            <li><strong>Listening to Real Conversations via Fathom:</strong> Instead of asking the CEO to sit down and brainstorm from scratch, the pipeline ingested meeting notes and transcripts from <strong>Fathom</strong> across our internal product syncs and customer conversations, extracting the exact phrases, stories, and convictions she used naturally.</li>
+            <li><strong>Capturing Weekly Bookmarks:</strong> Whenever she came across an interesting article or post during the week, she forwarded the bookmark to the tool so her current reading fed directly into her content queue.</li>
+            <li><strong>GPT-5 Sentiment Analysis Across the HR Ecosystem:</strong> Using <strong>GPT-5</strong>, the workflow analyzed current sentiment and debates happening across the HR and recruiting space online, identifying where her perspective offered a sharp, contrarian, or practical take.</li>
+            <li><strong>Monday Morning Topic Briefs &amp; LinkedIn Drafts:</strong> Every Monday morning, the system surfaced a curated set of high-signal topics along with ready-to-edit LinkedIn post drafts written in her own voice.</li>
+          </ol>
+
+          <hr>
+
+          <h2 id="results">3. Results &amp; Impact</h2>
+          <ul>
+            <li><strong>Consistent 3x+ weekly publishing cadence:</strong> Eliminated blank-page anxiety completely, taking the CEO from sporadic posting to publishing at least three high-conviction LinkedIn posts every week.</li>
+            <li><strong>~30% lift in top-of-funnel signups:</strong> The steady cadence of founder-led content drove an estimated 30% increase in organic signups for our HR and career platform.</li>
+            <li><strong>More mid-market consultative sales calls:</strong> Beyond self-serve signups, her LinkedIn presence directly increased inbound consultative calls, which served as her primary sales motion for bringing larger mid-market companies into the pipeline.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

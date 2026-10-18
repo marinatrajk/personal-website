@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <title>Meeple: Custom Lead Follow-Up Pages | Marina Trajkovska</title>
-  <meta name="description" content="Enabling sales reps to follow up with custom interactive microportals built for each lead.">
+  <title>Meeple: Buyer Intelligence &amp; Custom Follow-Up Harness (+5% Deal Close) | Marina Trajkovska</title>
+  <meta name="description" content="How I engineered an early-AI scraping, prioritization, and custom follow-up page harness for our sales team that moved leads from discovery into evaluation and closed 5% more deals.">
   <meta name="author" content="Marina Trajkovska">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Marina Trajkovska">
-  <meta property="og:title" content="Meeple: Custom Lead Follow-Up Pages | Marina Trajkovska">
-  <meta property="og:description" content="Enabling sales reps to follow up with custom interactive microportals built for each lead.">
+  <meta property="og:title" content="Meeple: Buyer Intelligence &amp; Custom Follow-Up Harness (+5% Deal Close) | Marina Trajkovska">
+  <meta property="og:description" content="How I engineered an early-AI scraping, prioritization, and custom follow-up page harness for our sales team that moved leads from discovery into evaluation and closed 5% more deals.">
   <meta property="og:image" content="../images/profile/marina-view.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@marinatrajk">
   <meta name="twitter:creator" content="@marinatrajk">
-  <meta name="twitter:title" content="Meeple: Custom Lead Follow-Up Pages | Marina Trajkovska">
-  <meta name="twitter:description" content="Enabling sales reps to follow up with custom interactive microportals built for each lead.">
+  <meta name="twitter:title" content="Meeple: Buyer Intelligence &amp; Custom Follow-Up Harness (+5% Deal Close) | Marina Trajkovska">
+  <meta name="twitter:description" content="How I engineered an early-AI scraping, prioritization, and custom follow-up page harness for our sales team that moved leads from discovery into evaluation and closed 5% more deals.">
   <meta name="twitter:image" content="../images/profile/marina-view.jpg">
   <link rel="stylesheet" href="../styles.css">
 </head>
@@ -30,10 +30,10 @@
     </header>
 
     <article>
-      <h1>Enabling sales reps to follow up with custom pages for their leads</h1>
+      <h1>Building an early-AI buyer intelligence &amp; follow-up harness that closed 5% more deals</h1>
 
       <div class="post-meta-row">
-        <p class="post-meta">Case study · Meeple</p>
+        <p class="post-meta">Case study · Sales Enablement (Meeple)</p>
         <nav class="post-topics" aria-label="Article topics">
           <a class="post-topic" href="../topics/gtm.html">GTM</a>
           <a class="post-topic" href="../topics/enablement.html">Enablement</a>
@@ -42,64 +42,64 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>How we turned messy post-call emails and static PDFs into tailored, interactive client microportals generated in 30 seconds from a Zoom call.</strong>
+        <strong>How I built a custom data-scraping, prioritization, and frontend follow-up harness at my AI studio (before modern agent skills existed) to help our CEO and sales team move more deals from discovery into evaluation.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-problem">The problem</h2>
+          <h2 id="the-problem">1. The Problem</h2>
           <p>
-            After every discovery or demo call, sales reps were spending 30 to 45 minutes writing long recap emails and attaching four or five separate PDFs, slide decks, and links. Every rep had their own patchwork system: some sent Notion pages, some sent Loom links, and others sent a three-sentence email with a generic deck.
+            At my AI studio, our CEO and sales team needed a sharper way to follow up after discovery calls: capturing the exact buyer words used on the call, understanding what the prospect's company was actually doing, and tailoring our sales motion to show how our services fit their specific workflows.
           </p>
           <p>
-            Worse, B2B deals rarely close with just the person on the first call. When an internal champion tried to forward a sprawling email thread to their VP, CFO, or security team for budget sign-off, half the context got lost. New stakeholders joined late in the cycle asking the same questions, deals stalled in mid-funnel, and the sales team had zero visibility into whether anyone on the buyer’s side was actually reading their proposals.
+            After every discovery or demo call, reps were spending 30 to 45 minutes writing long recap emails and attaching static PDFs or decks. Worse, when an internal champion forwarded a sprawling email thread to their executive team, half the context got lost, and deals stalled between discovery and evaluation.
           </p>
 
-          <h2 id="what-we-built">What we built</h2>
+          <hr>
+
+          <h2 id="what-we-built">2. Engineering the Harness (Early AI, Pre-Skills Era)</h2>
           <p>
-            We built <strong>Meeple</strong> to turn a Zoom call into a personalized, interactive buyer microportal in under 30 seconds, giving reps a single link tailored to that specific lead and giving champions a hub they can share internally with decision-makers.
+            Because we built <strong>Meeple</strong> during the early wave of AI before modern agent skills or MCP frameworks existed, I had to engineer the entire orchestration harness from scratch: scraping account data, prioritizing buyer signals, wrapping the LLM chatbot logic, and mapping the structured output directly into a custom frontend design.
           </p>
 
           <div class="table-wrap strategy-table-wrap">
-            <table class="borderless-table strategy-table">
+            <table class="strategy-table">
               <thead>
                 <tr>
-                  <th>Step</th>
-                  <th>How it works</th>
+                  <th>Layer</th>
+                  <th>How It Works</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Call ingestion &amp; extraction</td>
-                  <td>Reps upload a Zoom recording (audio/video or transcript) right after a call. The pipeline transcribes the conversation and extracts the prospect’s role, whether they’re the sole decision-maker, their core pain points, the relevant value proposition, and agreed-upon next steps.</td>
+                  <td>Call ingestion &amp; buyer language extraction</td>
+                  <td>Ingests the discovery call recording or transcript to identify the buyer's exact words, their role, whether they are the sole decision-maker, their core pain points, and agreed-upon next steps.</td>
                 </tr>
                 <tr>
-                  <td>Live account research</td>
-                  <td>Alongside the transcript, an AI research workflow scrapes the lead’s company website and runs grounded web search to pull company overview, recent initiatives, and role-specific priorities, combining what was said on the call with real account intelligence.</td>
+                  <td>Account scraping &amp; signal prioritization</td>
+                  <td>Scrapes a wide set of company data and web signals, then filters and prioritizes what the prospect's business is doing right now so the sales team can customize the pitch around their actual roadmap.</td>
                 </tr>
                 <tr>
-                  <td>Tailored microportal generation</td>
-                  <td>Using the extracted deal context and research brief, the system generates a branded page structured around the buyer: a personalized intro, key challenges in the prospect’s own words, a tailored “Why Us” business case, an executive champion note for internal forwarding, and an interactive Mutual Action Plan with assignees and due dates.</td>
+                  <td>Custom LLM harness &amp; frontend mapping</td>
+                  <td>Runs the prioritized account intelligence and call transcript through a custom-built prompt harness that maps structured outputs directly to interactive frontend components: a personalized intro, challenges in the buyer's own words, a tailored business case, and a Mutual Action Plan.</td>
                 </tr>
                 <tr>
-                  <td>Modular saved sections</td>
-                  <td>Reps can attach pre-approved collateral blocks in one click (such as SOC 2 security packets, pricing tiers, ROI case studies, 2-minute product tours, or 14-day onboarding timelines) and fine-tune any block inline before publishing.</td>
-                </tr>
-                <tr>
-                  <td>Buyer intent &amp; pipeline tracking</td>
-                  <td>Every microportal tracks views and clicks across stakeholders and syncs directly with a deal pipeline board (Discovery → Proposal → Negotiation → Won), so reps can see when a portal is shared internally and which sections decision-makers care about most.</td>
+                  <td>Modular collateral &amp; pipeline tracking</td>
+                  <td>Lets reps attach pre-approved case studies, pricing tiers, and onboarding timelines in one click, while tracking stakeholder views as deals progress from Discovery to Evaluation.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h2 id="impact-and-takeaways">Impact &amp; takeaways</h2>
+          <hr>
+
+          <h2 id="impact-and-takeaways">3. Results &amp; Takeaways</h2>
           <ul>
-            <li><strong>45 minutes down to 30 seconds:</strong> Post-call follow-up went from a tedious manual chore that reps procrastinated on to an instant review-and-send workflow right after hanging up.</li>
-            <li><strong>Arming the internal champion:</strong> Expecting a prospect to pitch your product from memory using a generic slide deck is where deals go to die. Giving them a page written in their company’s own language, complete with a champion summary for their VP or CFO, made internal selling effortless.</li>
-            <li><strong>AI synthesis + modular guardrails beat blank-canvas generation:</strong> Combining AI-generated deal narratives (from the call transcript and live account research) with pre-approved <em>Saved Sections</em> (pricing, security, case studies) gave reps speed and personalization without ever going off-brand.</li>
+            <li><strong>Closed 5% more deals:</strong> By customizing our follow-up motion around the buyer's exact words and prioritized company context, we moved significantly more prospects from discovery into active evaluation and <strong>increased deal close rates by 5%</strong>.</li>
+            <li><strong>45 minutes down to 30 seconds:</strong> Post-call follow-up went from a manual research and copywriting chore to an instant review-and-send microportal right after hanging up.</li>
+            <li><strong>Building the harness before the frameworks existed:</strong> Writing our own data-scraping, prioritization, and UI-mapping harness early on laid the foundation for how I now architect modern agent skills and GTM workflows.</li>
           </ul>
         </div>
       </div>

@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <title>SKILL.md: Building a Meta-Skill for Skills & Plugins | Marina Trajkovska</title>
-  <meta name="description" content="Building a meta-skill to help non-technical teammates ship high-quality agent skills and plugins independently.">
+  <title>SKILL.md: From AI-Anxious to 1 GEO Article a Day with a Meta-Skill | Marina Trajkovska</title>
+  <meta name="description" content="How hands-on AI literacy workshops and a meta-skill for structuring SKILL.md enabled our Head of Content to automate his GEO workflow and publish one article per day end-to-end.">
   <meta name="author" content="Marina Trajkovska">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Marina Trajkovska">
-  <meta property="og:title" content="SKILL.md: Building a Meta-Skill for Skills & Plugins | Marina Trajkovska">
-  <meta property="og:description" content="Building a meta-skill to help non-technical teammates ship high-quality agent skills and plugins independently.">
+  <meta property="og:title" content="SKILL.md: From AI-Anxious to 1 GEO Article a Day with a Meta-Skill | Marina Trajkovska">
+  <meta property="og:description" content="How hands-on AI literacy workshops and a meta-skill for structuring SKILL.md enabled our Head of Content to automate his GEO workflow and publish one article per day end-to-end.">
   <meta property="og:image" content="../images/profile/marina-view.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@marinatrajk">
   <meta name="twitter:creator" content="@marinatrajk">
-  <meta name="twitter:title" content="SKILL.md: Building a Meta-Skill for Skills & Plugins | Marina Trajkovska">
-  <meta name="twitter:description" content="Building a meta-skill to help non-technical teammates ship high-quality agent skills and plugins independently.">
+  <meta name="twitter:title" content="SKILL.md: From AI-Anxious to 1 GEO Article a Day with a Meta-Skill | Marina Trajkovska">
+  <meta name="twitter:description" content="How hands-on AI literacy workshops and a meta-skill for structuring SKILL.md enabled our Head of Content to automate his GEO workflow and publish one article per day end-to-end.">
   <meta name="twitter:image" content="../images/profile/marina-view.jpg">
   <link rel="stylesheet" href="../styles.css">
 </head>
@@ -30,48 +30,57 @@
     </header>
 
     <article>
-      <h1>Building a meta-skill to help non-technical teammates ship high-quality skills &amp; plugins</h1>
+      <h1>From AI-anxious to 1 GEO article a day: enabling our Head of Content to author production skills</h1>
 
       <div class="post-meta-row">
-        <p class="post-meta">Case study · SKILL.md</p>
+        <p class="post-meta">Case study · Content &amp; GEO Enablement</p>
         <nav class="post-topics" aria-label="Article topics">
           <a class="post-topic" href="../topics/agents.html">Agents</a>
           <a class="post-topic" href="../topics/enablement.html">Enablement</a>
+          <a class="post-topic" href="../topics/gtm.html">GTM</a>
         </nav>
       </div>
 
       <p class="post-standfirst">
-        <strong>How designing a meta-skill unlocked a non-technical colleague to author reliable, production-ready agent skills and plugins independently.</strong>
+        <strong>How hands-on AI literacy workshops and a meta-skill for structuring <code>SKILL.md</code> turned a non-technical content leader into an autonomous builder shipping one GEO article per day end-to-end.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="context">Context</h2>
+          <h2 id="context">1. Context: AI Literacy Beyond Building a Tool</h2>
           <p>
-            Nick Zeeb, Vellum’s GTM content lead, isn’t an engineer, and that was the point. When he wanted to build his first agent skill, he hit the wall every non-technical builder hits: skills look simple from the outside, just prompts and files, but making one reliable means knowing where models actually break. Instructions drift. Context gets ignored. Steps fail silently. That knowledge usually lives with the people who’ve already shipped, which is exactly who a non-technical builder doesn’t have.
+            When our Head of Content wanted to scale our GEO (Generative Engine Optimization) process, he hit the wall every non-technical builder hits. Agent skills look simple from the outside, just markdown prompts and files, but making an agent execute a multi-step editorial methodology reliably means knowing where models actually break. Instructions drift. Context gets ignored. Steps fail silently.
+          </p>
+          <p>
+            True enablement isn't building a black-box tool for someone and walking away; it's teaching them how to structure their own domain expertise so their agent can do a great job.
           </p>
 
-          <h2 id="designing-the-meta-skill">Designing the meta-skill</h2>
+          <hr>
+
+          <h2 id="workshops-and-meta-skill">2. Hands-On Workshops &amp; Designing the Meta-Skill</h2>
           <p>
-            So instead of building skills for Nick, we built a skill for building skills. The meta-skill distills the guardrails experienced builders apply by hand into five rules:
+            I ran hands-on workshops with him to break down his editorial and GEO methodology, map out the hierarchy and outline of his skills, and pair that training with a <strong>meta-skill</strong> I built that distills the guardrails experienced builders apply by hand into five rules:
           </p>
           <ol>
-            <li><strong>Triggers written in the user’s words.</strong> If a skill describes itself in its own terms (“manage lead pipelines”) instead of the way a user would ask for it (“score this inbound lead”), the model never invokes it.</li>
-            <li><strong>Warnings at the point of action.</strong> Gotchas and destructive-action warnings live inline at the step they apply to, not in a footnote at the end. By line 240, the model has forgotten line 10.</li>
-            <li><strong>Checkpoints between steps.</strong> Multi-step skills pause and verify state before continuing, which is what stops runaway execution.</li>
+            <li><strong>Triggers written in the user’s words.</strong> If a skill describes itself in abstract terms instead of the exact way the operator asks for a GEO audit or draft, the model never invokes it reliably.</li>
+            <li><strong>Warnings at the point of action.</strong> Gotchas and editorial guardrails live inline at the step they apply to, not buried in a footnote at the end. By line 240, the model has forgotten line 10.</li>
+            <li><strong>Checkpoints between steps.</strong> Multi-step GEO research and drafting skills pause and verify state between outline, citation check, and final draft before continuing.</li>
             <li><strong>Branching where the decision happens.</strong> If/then logic sits inside the step it belongs to, not in a centralized error-handling section the model won’t scan ahead to read.</li>
-            <li><strong>A definition of done.</strong> Every skill ends with a clear completion signal, so builds stop when the work is finished instead of looping or trailing off in an ambiguous state.</li>
+            <li><strong>A definition of done.</strong> Every skill ends with a clear completion signal so the workflow stops cleanly when the article is ready to publish.</li>
           </ol>
           <p>
-            The meta-skill walks the builder through the whole arc: scope the task, draft against the five rules, then stress-test the result against the cases where it’s most likely to fall apart. Nick never had to learn the underlying machinery. The guardrails were the interface.
+            Together, we translated his manual GEO playbook into a clean hierarchy of skills that his agent could run with end-to-end.
           </p>
 
-          <h2 id="results">Results</h2>
-          <p>
-            Using the meta-skill, Nick shipped a lead-scoring skill on his own, no engineering time required, and cut inbound triage from 3 hours to 20 minutes. The bigger unlock goes beyond Nick: the five rules turned a thing only experienced builders could do into something anyone on the team can do. Domain knowledge is now enough to produce a production-ready agent skill, which means the people closest to the problem can solve it directly.
-          </p>
+          <hr>
+
+          <h2 id="results">3. Results &amp; Impact</h2>
+          <ul>
+            <li><strong>From AI-anxious to 1 GEO article per day:</strong> After our hands-on sessions and skill-structuring workshops, he went from feeling anxious about relying on AI to publishing <strong>one high-quality GEO article per day</strong> autonomously using his end-to-end workflow.</li>
+            <li><strong>Reusable meta-skill across the company:</strong> The same meta-skill guardrails now allow anyone on the team (from Content to Finance) to turn their domain knowledge into production-ready agent skills without waiting on engineering.</li>
+          </ul>
         </div>
       </div>
     </article>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Automating Twice-Weekly Engineering Releases, PR Cherry-Picking &amp; Feature-Flag-Safe Docs | Marina Trajkovska</title>
+  <meta name="description" content="How I automated Vellum's end-to-end release pipeline in Slack, from tag-based PR cherry-picking to feature-flag-aware documentation and release notes, saving ~2 hours every release.">
+  <meta name="author" content="Marina Trajkovska">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marina Trajkovska">
+  <meta property="og:title" content="Automating Twice-Weekly Engineering Releases, PR Cherry-Picking &amp; Feature-Flag-Safe Docs | Marina Trajkovska">
+  <meta property="og:description" content="How I automated Vellum's end-to-end release pipeline in Slack, from tag-based PR cherry-picking to feature-flag-aware documentation and release notes, saving ~2 hours every release.">
+  <meta property="og:image" content="../images/profile/marina-view.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marinatrajk">
+  <meta name="twitter:creator" content="@marinatrajk">
+  <meta name="twitter:title" content="Automating Twice-Weekly Engineering Releases, PR Cherry-Picking &amp; Feature-Flag-Safe Docs | Marina Trajkovska">
+  <meta name="twitter:description" content="How I automated Vellum's end-to-end release pipeline in Slack, from tag-based PR cherry-picking to feature-flag-aware documentation and release notes, saving ~2 hours every release.">
+  <meta name="twitter:image" content="../images/profile/marina-view.jpg">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Automating twice-weekly engineering releases, PR cherry-picking, and feature-flag-safe docs from Slack</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · Engineering &amp; Release Ops</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a>
+          <a class="post-topic" href="../topics/gtm.html">GTM</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>Turning a manual, multi-step release coordination chore into an end-to-end Slack workflow that cherry-picks tagged PRs, deploys with one click, and updates docs without leaking feature-flagged code.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="the-challenge">1. The Challenge</h2>
+          <p>
+            Shipping twice a week meant our engineering and GTM teams were constantly coordinating release branches, cherry-picking last-minute fixes, verifying staging builds, and writing release notes and documentation updates under tight deadlines.
+          </p>
+          <p>
+            Three friction points slowed down every cycle:
+          </p>
+          <ol>
+            <li><strong>Rebuilding vs. Cherry-Picking:</strong> When a bug fix needed to land in an active release candidate, manually cherry-picking commits or rebuilding the release branch from scratch ate up engineering time.</li>
+            <li><strong>Scattered Release Coordination:</strong> Status checks, QA sign-offs, and deploy triggers happened across multiple tools and threads.</li>
+            <li><strong>Feature-Flag Leaks in Docs &amp; Release Notes:</strong> Merged PRs often contained code tucked behind feature flags that wasn't ready for customers yet. Summarizing all merged PRs blindly risked announcing unreleased features in public docs and changelogs.</li>
+          </ol>
+
+          <hr>
+
+          <h2 id="the-architecture">2. The End-to-End Automated Release Flow</h2>
+          <p>
+            I automated the entire release lifecycle so the whole workflow runs through our <code>#release</code> channel in Slack:
+          </p>
+
+          <figure class="article-figure">
+            <svg viewBox="0 0 740 165" width="100%" role="img" aria-label="Diagram of automated release pipeline from twice-weekly trigger to PR cherry-picking, Slack deploy button, and feature-flag-filtered docs" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+              <defs>
+                <marker id="arrow-rel" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 9 5 L 0 9 z" fill="#7d786f"/>
+                </marker>
+              </defs>
+              <rect x="12" y="48" width="155" height="68" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="89" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#181715">1. Release Cut</text>
+              <text x="89" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Auto 2x/Week</text>
+
+              <line x1="167" y1="82" x2="195" y2="82" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-rel)"/>
+
+              <rect x="199" y="48" width="160" height="68" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="279" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#181715">2. Auto Cherry-Pick</text>
+              <text x="279" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Tag PR → Merge Fix</text>
+
+              <line x1="359" y1="82" x2="387" y2="82" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-rel)"/>
+
+              <rect x="391" y="48" width="155" height="68" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="468" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#181715">3. Slack Deploy</text>
+              <text x="468" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">1-Click Go Live</text>
+
+              <line x1="546" y1="82" x2="574" y2="82" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-rel)"/>
+
+              <rect x="578" y="48" width="150" height="68" rx="6" fill="#ffffff" stroke="#c24e2b" stroke-width="1.5"/>
+              <text x="653" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#181715">4. Flag-Safe Docs</text>
+              <text x="653" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c24e2b">Checks Code Flags</text>
+            </svg>
+          </figure>
+
+          <ol>
+            <li><strong>Scheduled Twice-Weekly Release Kickoff:</strong> Releases start automatically twice a week, cutting the release candidate and opening the coordination thread in our Slack release channel.</li>
+            <li><strong>Tag-Driven PR Cherry-Picking:</strong> When engineers need to push a fix into an existing release candidate, they simply tag the PR. The automation cherry-picks the tagged PR and merges it cleanly into the release branch so we never have to rebuild everything from scratch.</li>
+            <li><strong>One-Click Go-Live in Slack:</strong> Once QA testing is complete, all bugs are cleared, and the version is marked stable, shipping to production is a single button click directly inside Slack.</li>
+            <li><strong>Feature-Flag-Aware Docs &amp; Release Notes:</strong> As soon as the release goes live, the pipeline inspects the merged changes alongside our <strong>feature flag configurations in code</strong>. Anything gated behind an inactive feature flag is automatically filtered out, while publicly live features and fixes are synthesized into updated documentation and release notes.</li>
+          </ol>
+
+          <hr>
+
+          <h2 id="results">3. Results &amp; Impact</h2>
+          <ul>
+            <li><strong>~2 hours saved on every release (~4 hours/week):</strong> Eliminated manual branch wrangling, cherry-pick coordination, and changelog drafting across our twice-weekly release cadence.</li>
+            <li><strong>Zero accidental leaks of unreleased features:</strong> By verifying feature flag configs directly in code before generating docs and release notes, our public documentation stays immediately up to date after every deploy without ever exposing dark-launched work.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>

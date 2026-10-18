@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Cutting 15+ Hours a Week of QuickBooks Reconciliation with a Self-Expanding Finance Agent | Marina Trajkovska</title>
+  <meta name="description" content="How I connected QuickBooks via one-click OAuth to an agent loop with a meta-skill trigger, dropping our CFO's manual reconciliation work from 15+ hours a week down to 4 hours.">
+  <meta name="author" content="Marina Trajkovska">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marina Trajkovska">
+  <meta property="og:title" content="Cutting 15+ Hours a Week of QuickBooks Reconciliation with a Self-Expanding Finance Agent | Marina Trajkovska">
+  <meta property="og:description" content="How I connected QuickBooks via one-click OAuth to an agent loop with a meta-skill trigger, dropping our CFO's manual reconciliation work from 15+ hours a week down to 4 hours.">
+  <meta property="og:image" content="../images/profile/marina-view.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marinatrajk">
+  <meta name="twitter:creator" content="@marinatrajk">
+  <meta name="twitter:title" content="Cutting 15+ Hours a Week of QuickBooks Reconciliation with a Self-Expanding Finance Agent | Marina Trajkovska">
+  <meta name="twitter:description" content="How I connected QuickBooks via one-click OAuth to an agent loop with a meta-skill trigger, dropping our CFO's manual reconciliation work from 15+ hours a week down to 4 hours.">
+  <meta name="twitter:image" content="../images/profile/marina-view.jpg">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Cutting 15+ hours a week of QuickBooks reconciliation and enabling our CFO to expand his own finance agent</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · Finance &amp; Accounting</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a>
+          <a class="post-topic" href="../topics/enablement.html">Enablement</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>How connecting QuickBooks via one-click OAuth and embedding a meta-skill inside the agent loop dropped our CFO's weekly reconciliation work from 15+ hours down to 4 hours.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="the-challenge">1. The Challenge</h2>
+          <p>
+            Every month, our CFO was spending <strong>15+ hours per week</strong> inside QuickBooks working through month-end close, cross-checking ledger entries, and running manual account reconciliations to make sure every number checked out.
+          </p>
+          <p>
+            Beyond the scheduled month-end grind, ad-hoc executive questions created constant context-switching. Whenever the CEO asked a question like <em>"Did marketing overspend this month, and on which vendors?"</em>, answering it meant logging back into QuickBooks, exporting reports, and reconciling line items by hand.
+          </p>
+
+          <hr>
+
+          <h2 id="the-architecture">2. The Architecture: QuickBooks OAuth + Self-Expanding Skills</h2>
+          <p>
+            Rather than building a static dashboard that would go stale the moment a new accounting question came up, I built an interactive finance workflow connected directly to QuickBooks and designed the agent to evolve alongside the CFO's usage:
+          </p>
+
+          <figure class="article-figure">
+            <svg viewBox="0 0 740 190" width="100%" role="img" aria-label="Diagram of QuickBooks OAuth connection feeding the Finance Agent Loop and Meta-Skill Trigger" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+              <defs>
+                <marker id="arrow-fin" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 9 5 L 0 9 z" fill="#7d786f"/>
+                </marker>
+              </defs>
+              <rect x="16" y="64" width="190" height="60" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="111" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">QuickBooks Online</text>
+              <text x="111" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#7d786f">1-Click OAuth Connection</text>
+
+              <line x1="206" y1="94" x2="254" y2="94" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-fin)"/>
+
+              <rect x="258" y="64" width="205" height="60" rx="6" fill="#ffffff" stroke="#c24e2b" stroke-width="1.5"/>
+              <text x="360" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#181715">Finance Agent Loop</text>
+              <text x="360" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#c24e2b">Reconciliation &amp; Spend Q&amp;A</text>
+
+              <path d="M 463 82 L 492 82 L 492 50 L 516 50" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-fin)"/>
+              <path d="M 463 106 L 492 106 L 492 138 L 516 138" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-fin)"/>
+
+              <rect x="520" y="22" width="204" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="622" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Instant Executive Answers</text>
+              <text x="622" y="64" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#7d786f">Budget vs. Actuals in Seconds</text>
+
+              <rect x="520" y="110" width="204" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="622" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Meta-Skill Trigger</text>
+              <text x="622" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#7d786f">Creates &amp; Updates CFO Skills</text>
+            </svg>
+          </figure>
+
+          <ol>
+            <li><strong>One-Click OAuth QuickBooks Integration:</strong> Connected the CFO's assistant directly to QuickBooks via one-click OAuth authentication, allowing the agent to query transactions, vendor spend, and account balances securely in real time.</li>
+            <li><strong>Conversational Reconciliation &amp; Consolidation:</strong> Instead of clicking through multiple QuickBooks screens to cross-check numbers for month-end close, the CFO can ask his assistant to consolidate accounts, flag discrepancies, and verify balances directly in chat.</li>
+            <li><strong>Self-Expanding Workflow via a Meta-Skill Trigger:</strong> Inside the agent loop, I wired a trigger backed by a <strong>meta-skill</strong> I authored. Whenever the CFO walks the agent through a new accounting check or recurring financial rule, the trigger updates his existing finance skills or generates a properly structured new skill automatically.</li>
+          </ol>
+
+          <hr>
+
+          <h2 id="results">3. Results &amp; Impact</h2>
+          <ul>
+            <li><strong>15+ hours/week down to 4 hours/week:</strong> Cut manual QuickBooks reconciliation and month-end prep time by more than 70%, freeing up 11+ hours of executive finance time every single week.</li>
+            <li><strong>Instant answers to CEO spend questions:</strong> When the CEO asks whether marketing overspent or how a department is tracking against budget, the CFO asks his assistant and gets a consolidated, QuickBooks-verified breakdown almost instantly.</li>
+            <li><strong>True AI enablement:</strong> Because the agent loop uses the meta-skill to codify new financial checks into reusable skills, the CFO continuously expands the finance workflow himself without waiting on engineering.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>
