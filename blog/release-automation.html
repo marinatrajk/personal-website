@@ -30,7 +30,7 @@
     </header>
 
     <article>
-      <h1>Automating twice-weekly engineering releases, PR cherry-picking, and feature-flag-safe docs from Slack</h1>
+      <h1>Agentic Slack release and feature-flag pipeline</h1>
 
       <div class="post-meta-row">
         <p class="post-meta">Case study · Engineering &amp; Release Ops</p>
@@ -41,31 +41,31 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>Turning a manual, multi-step release coordination chore into an end-to-end Slack workflow that cherry-picks tagged PRs, deploys with one click, and updates docs without leaking feature-flagged code.</strong>
+        <strong>How we automated our twice-weekly releases in Slack to cherry-pick tagged PRs, deploy with one click, and update public docs without leaking feature-flagged code.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-challenge">The Challenge</h2>
+          <h2 id="the-problem">The problem</h2>
           <p>
-            Shipping twice a week meant our engineering and GTM teams were constantly coordinating release branches, cherry-picking last-minute fixes, verifying staging builds, and writing release notes and documentation updates under tight deadlines.
+            We ship to production twice a week. Every release meant engineers and GTM teammates had to coordinate branches, cherry-pick last-minute bug fixes, check staging builds, and write release notes and docs on a tight deadline.
           </p>
           <p>
-            Three friction points slowed down every cycle:
+            Three things kept slowing us down:
           </p>
           <ol>
-            <li><strong>Rebuilding vs. Cherry-Picking:</strong> When a bug fix needed to land in an active release candidate, manually cherry-picking commits or rebuilding the release branch from scratch ate up engineering time.</li>
-            <li><strong>Scattered Release Coordination:</strong> Status checks, QA sign-offs, and deploy triggers happened across multiple tools and threads.</li>
-            <li><strong>Feature-Flag Leaks in Docs &amp; Release Notes:</strong> Merged PRs often contained code tucked behind feature flags that wasn't ready for customers yet. Summarizing all merged PRs blindly risked announcing unreleased features in public docs and changelogs.</li>
+            <li><strong>Rebuilding branches when fixes came in late:</strong> Whenever a bug fix needed to get into an active release, manually cherry-picking commits or rebuilding the release branch from scratch wasted engineering time.</li>
+            <li><strong>Scattered coordination:</strong> QA sign-offs, status checks, and deploy triggers were spread across different tools and threads.</li>
+            <li><strong>Feature flags leaking into public docs:</strong> Some merged PRs were hidden behind feature flags and weren't live for customers yet. If you summarize every merged PR automatically, you risk announcing unfinished features in public release notes.</li>
           </ol>
 
           <hr>
 
-          <h2 id="the-architecture">The End-to-End Automated Release Flow</h2>
+          <h2 id="what-we-built">What we built</h2>
           <p>
-            I automated the entire release lifecycle so the whole workflow runs through our <code>#release</code> channel in Slack:
+            I automated the entire release process so everything happens right inside our <code>#release</code> channel in Slack:
           </p>
 
           <figure class="article-figure">
@@ -100,18 +100,18 @@
           </figure>
 
           <ol>
-            <li><strong>Scheduled Twice-Weekly Release Kickoff:</strong> Releases start automatically twice a week, cutting the release candidate and opening the coordination thread in our Slack release channel.</li>
-            <li><strong>Tag-Driven PR Cherry-Picking:</strong> When engineers need to push a fix into an existing release candidate, they simply tag the PR. The automation cherry-picks the tagged PR and merges it cleanly into the release branch so we never have to rebuild everything from scratch.</li>
-            <li><strong>One-Click Go-Live in Slack:</strong> Once QA testing is complete, all bugs are cleared, and the version is marked stable, shipping to production is a single button click directly inside Slack.</li>
-            <li><strong>Feature-Flag-Aware Docs &amp; Release Notes:</strong> As soon as the release goes live, the pipeline inspects the merged changes alongside our <strong>feature flag configurations in code</strong>. Anything gated behind an inactive feature flag is automatically filtered out, while publicly live features and fixes are synthesized into updated documentation and release notes.</li>
+            <li><strong>Automatic release kickoff twice a week:</strong> The release starts automatically on schedule, cuts the release branch, and posts a status thread in our Slack release channel.</li>
+            <li><strong>Tagging a PR to cherry-pick it:</strong> If an engineer needs to add a fix to the current release, they just add a tag to their PR. The workflow cherry-picks that PR and merges it into the release branch automatically, so we don't have to rebuild the whole release.</li>
+            <li><strong>One-click deploy in Slack:</strong> Once QA testing is done and the build is stable, anyone on the release team can push the release live to production by clicking a button in Slack.</li>
+            <li><strong>Checking feature flags in code before updating docs:</strong> Right after the release goes live, the agent checks the merged PRs against our <strong>feature flag configs in code</strong>. Anything still hidden behind a feature flag gets skipped, and only the features that are actually live for users get added to our public docs and release notes.</li>
           </ol>
 
           <hr>
 
-          <h2 id="results">Results &amp; Impact</h2>
+          <h2 id="the-result">The result</h2>
           <ul>
-            <li><strong>~2 hours saved on every release (~4 hours/week):</strong> Eliminated manual branch wrangling, cherry-pick coordination, and changelog drafting across our twice-weekly release cadence.</li>
-            <li><strong>Zero accidental leaks of unreleased features:</strong> By verifying feature flag configs directly in code before generating docs and release notes, our public documentation stays immediately up to date after every deploy without ever exposing dark-launched work.</li>
+            <li><strong>Saves ~2 hours on every release (~4 hours a week):</strong> Cut out manual branch work, cherry-pick wrangling, and release-note writing twice a week.</li>
+            <li><strong>Docs stay up to date without leaking hidden features:</strong> Because the pipeline checks feature flags in code first, our public docs and changelog update right after every release without ever exposing unfinished work.</li>
           </ul>
         </div>
       </div>

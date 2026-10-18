@@ -30,7 +30,7 @@
     </header>
 
     <article>
-      <h1>AI enablement: improving prompting and evaluating outputs across LLMs with Vellum</h1>
+      <h1>Prompt engineering and multi-LLM evals in Vellum</h1>
 
       <div class="post-meta-row">
         <p class="post-meta">Case study · LLM evals</p>
@@ -41,42 +41,41 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>Teaching a teammate how to systematically iterate on prompts and compare outputs across multiple LLMs in Vellum.</strong>
+        <strong>How I taught our CEO to test prompts against real test cases and compare outputs across multiple LLMs in Vellum on her own.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-challenge">The challenge</h2>
+          <h2 id="the-problem">The problem</h2>
           <p>
-            Odyseek is a career agent, and I was building it as the engineer. But the domain knowledge sat with Cat, our CEO: as an experienced hiring manager, she knew exactly what the agent’s outputs should look like, and she could tell within seconds when they were wrong. The problem was that her workflow for acting on that knowledge lived in a single chat window: tweak the prompt, reread the output, tweak again. It felt productive, but nothing accumulated. There was no record of which version performed better, no way to compare models side by side, and every evaluation ran through the same resource: Cat herself, rereading outputs and judging them from experience.
+            At Odyseek, I was building our career agent as the founding engineer, while our CEO, Cat, held the domain expertise. As an experienced hiring manager, she knew right away when the agent's advice sounded right and when it missed the mark.
           </p>
           <p>
-            For a career agent, where output quality directly affects decisions about people’s careers, gut feel isn’t a quality bar. Cat’s expertise was the evaluation layer, and as long as testing a prompt properly required an engineer in the loop, that layer had no way to scale. She needed evidence, and she needed to generate it herself.
+            The problem was how she was testing prompts: she was tweaking a prompt in a single chat window, reading the reply, and tweaking it again. Nothing was saved, there was no easy way to compare different models side by side, and every prompt change still needed an engineer to test properly and ship.
           </p>
 
-          <h2 id="how-we-set-up-vellum">How we set up Vellum</h2>
+          <hr>
+
+          <h2 id="what-we-did">What we did</h2>
           <p>
-            Rather than hand Cat a tool and a login, I walked her through a repeatable workflow for treating prompts like something you can actually test:
+            Instead of just handing her a login, I sat down with her and set up a simple workflow in Vellum so she could test and compare prompts herself:
           </p>
           <ol>
-            <li><strong>Structure the prompt as an artifact.</strong> We moved the prompt out of the chat window and into a workflow with defined inputs, so every run used a versioned prompt against real data instead of a fresh paraphrase from memory.</li>
-            <li><strong>Build a small test set.</strong> A set of real cases from the agent’s actual usage became the baseline. Now “is this prompt good?” had a fixed yardstick instead of whatever output happened to come back that day.</li>
-            <li><strong>Run side-by-side comparisons.</strong> With the test set in place, Cat could run the same inputs across models from different providers and see the differences in one view, instead of pasting the same prompt into a row of chat tabs and squinting.</li>
-            <li><strong>Score the outputs.</strong> Cat’s judgment became the evaluation criteria: what she’d been checking by instinct as a hiring manager got written down as the bar every output is measured against, so model choice and prompt changes became decisions she could defend, not coin flips.</li>
+            <li><strong>Version every prompt:</strong> We moved prompts out of chat windows and into versioned workflows with clear inputs, so every change was saved and easy to roll back.</li>
+            <li><strong>Test against real examples:</strong> We pulled a small set of real user cases so she could test every prompt change against the exact same examples instead of guessing from a single chat reply.</li>
+            <li><strong>Compare models side by side:</strong> She could run the same test cases across OpenAI, Anthropic, and Gemini models in one view instead of copying and pasting across browser tabs.</li>
+            <li><strong>Score what "good" looks like:</strong> We turned the things she naturally checked as a hiring manager into simple evaluation rules so she could see which model and prompt actually scored best.</li>
           </ol>
-          <p>
-            The key shift wasn’t technical. Cat never needed to become an ML engineer, and I never needed to sit between her and the evidence. She needed the loop to be tight enough that iterating felt like testing, not guessing, and after the initial walkthrough she could run the whole loop herself.
-          </p>
 
-          <h2 id="outcome">Outcome</h2>
-          <p>
-            The most concrete change: Cat went from waiting on an engineer to test every prompt to running the full cycle independently. Structure the prompt, run the test set, compare models, score the outputs. Every change is on the record, and every prompt decision comes with a reason attached.
-          </p>
-          <p>
-            The confidence is the real outcome. When output quality is your responsibility and you can’t explain why a prompt works, you’re one unexplainable regression away from losing trust in the whole pipeline. Cat’s workflow now has an answer for “why this one?” for every prompt she ships.
-          </p>
+          <hr>
+
+          <h2 id="the-result">The result</h2>
+          <ul>
+            <li><strong>No more waiting on engineering to test prompts:</strong> Cat went from relying on an engineer for every prompt tweak to running tests, comparing models, and shipping better prompts on her own.</li>
+            <li><strong>Real confidence in every change:</strong> Every prompt update was backed by side-by-side test results instead of gut feel.</li>
+          </ul>
         </div>
       </div>
     </article>

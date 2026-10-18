@@ -30,7 +30,7 @@
     </header>
 
     <article>
-      <h1>Building an LLM harness for custom buyer follow-up pages (+5% close rate)</h1>
+      <h1>LLM harness for custom buyer pages (+5% close)</h1>
 
       <div class="post-meta-row">
         <p class="post-meta">Case study · Sales Enablement (Meeple)</p>
@@ -42,52 +42,52 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>How I built a custom data-scraping, prioritization, and frontend follow-up harness at my AI studio (before modern agent skills existed) to help our CEO and sales team move more deals from discovery into evaluation.</strong>
+        <strong>How I built a custom data-scraping and LLM follow-up harness at my AI studio (before modern agent skills existed) to help our sales team move more deals from discovery into evaluation.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-problem">The Problem</h2>
+          <h2 id="the-problem">The problem</h2>
           <p>
-            At my AI studio, our CEO and sales team needed a sharper way to follow up after discovery calls: capturing the exact buyer words used on the call, understanding what the prospect's company was actually doing, and tailoring our sales motion to show how our services fit their specific workflows.
+            At my AI studio, our CEO and sales team needed a better way to follow up after discovery calls. They wanted to use the buyer's exact words from the call, understand what the prospect's company was actually working on, and tailor our pitch to fit their needs.
           </p>
           <p>
-            After every discovery or demo call, reps were spending 30 to 45 minutes writing long recap emails and attaching static PDFs or decks. Worse, when an internal champion forwarded a sprawling email thread to their executive team, half the context got lost, and deals stalled between discovery and evaluation.
+            After every discovery or demo call, reps were spending 30 to 45 minutes writing long follow-up emails and attaching static PDFs. When our main contact forwarded that long email thread to their boss, half the context got lost and deals stalled.
           </p>
 
           <hr>
 
-          <h2 id="what-we-built">Engineering the Harness (Early AI, Pre-Skills Era)</h2>
+          <h2 id="what-we-built">What we built</h2>
           <p>
-            Because we built <strong>Meeple</strong> during the early wave of AI before modern agent skills or MCP frameworks existed, I had to engineer the entire orchestration harness from scratch: scraping account data, prioritizing buyer signals, wrapping the LLM chatbot logic, and mapping the structured output directly into a custom frontend design.
+            We built <strong>Meeple</strong> during the early days of AI, before modern agent skills or MCP tools existed. That meant I had to build the whole harness from scratch: scraping company data, picking out the most important signals, running the LLM prompts, and mapping the output into a custom follow-up page for each buyer.
           </p>
 
           <div class="table-wrap strategy-table-wrap">
             <table class="strategy-table">
               <thead>
                 <tr>
-                  <th>Layer</th>
-                  <th>How It Works</th>
+                  <th>Step</th>
+                  <th>What it does</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Call ingestion &amp; buyer language extraction</td>
-                  <td>Ingests the discovery call recording or transcript to identify the buyer's exact words, their role, whether they are the sole decision-maker, their core pain points, and agreed-upon next steps.</td>
+                  <td>Pulling the buyer's exact words</td>
+                  <td>Reads the discovery call transcript to find the buyer's role, whether they are the sole decision-maker, their main pain points in their own words, and the next steps we agreed on.</td>
                 </tr>
                 <tr>
-                  <td>Account scraping &amp; signal prioritization</td>
-                  <td>Scrapes a wide set of company data and web signals, then filters and prioritizes what the prospect's business is doing right now so the sales team can customize the pitch around their actual roadmap.</td>
+                  <td>Scraping &amp; filtering company data</td>
+                  <td>Scrapes company info and web signals, then filters down to what the prospect's business is focused on right now so the sales pitch matches their priorities.</td>
                 </tr>
                 <tr>
-                  <td>Custom LLM harness &amp; frontend mapping</td>
-                  <td>Runs the prioritized account intelligence and call transcript through a custom-built prompt harness that maps structured outputs directly to interactive frontend components: a personalized intro, challenges in the buyer's own words, a tailored business case, and a Mutual Action Plan.</td>
+                  <td>Mapping LLM output to a custom page</td>
+                  <td>Runs the call transcript and company context through a custom prompt harness that fills in a clean buyer page: a personal intro, their challenges in their own words, a tailored business case, and a shared action plan.</td>
                 </tr>
                 <tr>
-                  <td>Modular collateral &amp; pipeline tracking</td>
-                  <td>Lets reps attach pre-approved case studies, pricing tiers, and onboarding timelines in one click, while tracking stakeholder views as deals progress from Discovery to Evaluation.</td>
+                  <td>One-click case studies &amp; deal tracking</td>
+                  <td>Lets reps attach relevant case studies, pricing, and timelines in one click, and shows when the buyer's team views the page as the deal moves from Discovery to Evaluation.</td>
                 </tr>
               </tbody>
             </table>
@@ -95,11 +95,11 @@
 
           <hr>
 
-          <h2 id="impact-and-takeaways">Results &amp; Takeaways</h2>
+          <h2 id="the-result">The result</h2>
           <ul>
-            <li><strong>Closed 5% more deals:</strong> By customizing our follow-up motion around the buyer's exact words and prioritized company context, we moved significantly more prospects from discovery into active evaluation and <strong>increased deal close rates by 5%</strong>.</li>
-            <li><strong>45 minutes down to 30 seconds:</strong> Post-call follow-up went from a manual research and copywriting chore to an instant review-and-send microportal right after hanging up.</li>
-            <li><strong>Building the harness before the frameworks existed:</strong> Writing our own data-scraping, prioritization, and UI-mapping harness early on laid the foundation for how I now architect modern agent skills and GTM workflows.</li>
+            <li><strong>Closed 5% more deals:</strong> Tailoring every follow-up around the buyer's own words and company priorities helped move more prospects from discovery into evaluation and <strong>lifted our deal close rate by 5%</strong>.</li>
+            <li><strong>45 minutes down to 30 seconds:</strong> Reps went from spending 45 minutes writing recap emails to reviewing and sending a custom buyer page right after hanging up.</li>
+            <li><strong>Built before agent skills existed:</strong> Building our own scraping, filtering, and UI harness early on shaped how I build agent skills and GTM tools today.</li>
           </ul>
         </div>
       </div>

@@ -30,7 +30,7 @@
     </header>
 
     <article>
-      <h1>Cutting 15+ hours a week of QuickBooks reconciliation and enabling our CFO to expand his own finance agent</h1>
+      <h1>Self-evolving QuickBooks agent loop for our CFO</h1>
 
       <div class="post-meta-row">
         <p class="post-meta">Case study · Finance &amp; Accounting</p>
@@ -41,26 +41,26 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>How connecting QuickBooks via one-click OAuth and embedding a meta-skill inside the agent loop dropped our CFO's weekly reconciliation work from 15+ hours down to 4 hours.</strong>
+        <strong>How connecting QuickBooks with one-click OAuth and adding a meta-skill trigger inside the agent loop cut our CFO's weekly reconciliation work from 15+ hours down to 4 hours.</strong>
       </p>
 
       <div class="article-body">
         <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
 
         <div class="article-content">
-          <h2 id="the-challenge">The Challenge</h2>
+          <h2 id="the-problem">The problem</h2>
           <p>
-            Every month, our CFO was spending <strong>15+ hours per week</strong> inside QuickBooks working through month-end close, cross-checking ledger entries, and running manual account reconciliations to make sure every number checked out.
+            Every month, our CFO was spending <strong>15+ hours a week</strong> inside QuickBooks preparing for month-end close, checking ledger entries, and reconciling accounts by hand to make sure every number was right.
           </p>
           <p>
-            Beyond the scheduled month-end grind, ad-hoc executive questions created constant context-switching. Whenever the CEO asked a question like <em>"Did marketing overspend this month, and on which vendors?"</em>, answering it meant logging back into QuickBooks, exporting reports, and reconciling line items by hand.
+            On top of that, quick questions from the CEO took up even more time. Whenever the CEO asked something like <em>"Did marketing overspend this month, and on what?"</em>, our CFO had to log back into QuickBooks, pull reports, and check the line items manually.
           </p>
 
           <hr>
 
-          <h2 id="the-architecture">The Architecture: QuickBooks OAuth + Self-Expanding Skills</h2>
+          <h2 id="what-we-built">What we built</h2>
           <p>
-            Rather than building a static dashboard that would go stale the moment a new accounting question came up, I built an interactive finance workflow connected directly to QuickBooks and designed the agent to evolve alongside the CFO's usage:
+            Instead of building a static dashboard that would go out of date the next time a new question came up, I connected our CFO's assistant directly to QuickBooks and set up the agent loop so it gets smarter every time he uses it:
           </p>
 
           <figure class="article-figure">
@@ -84,7 +84,7 @@
               <path d="M 463 106 L 492 106 L 492 138 L 516 138" fill="none" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-fin)"/>
 
               <rect x="520" y="22" width="204" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
-              <text x="622" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Instant Executive Answers</text>
+              <text x="622" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">Instant Spend Answers</text>
               <text x="622" y="64" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#7d786f">Budget vs. Actuals in Seconds</text>
 
               <rect x="520" y="110" width="204" height="56" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
@@ -94,23 +94,23 @@
           </figure>
 
           <ol>
-            <li><strong>One-Click OAuth QuickBooks Integration:</strong> Connected the CFO's assistant directly to QuickBooks via one-click OAuth authentication, allowing the agent to query transactions, vendor spend, and account balances securely in real time without manual API key setup.</li>
-            <li><strong>Conversational Reconciliation &amp; Consolidation:</strong> Instead of clicking through multiple QuickBooks screens to cross-check numbers for month-end close, the CFO can ask his assistant to consolidate accounts, flag discrepancies, and verify balances directly in chat.</li>
-            <li><strong>Self-Expanding Workflow via a Meta-Skill Trigger:</strong> Inside the agent loop, I wired a trigger backed by a <strong>meta-skill</strong> I authored. Whenever the CFO walks the agent through a new accounting check or recurring financial rule, the trigger updates his existing finance skills or generates a properly structured new skill automatically.</li>
+            <li><strong>One-click QuickBooks login:</strong> I wired up QuickBooks with one-click OAuth authentication so the CFO can connect his account right inside chat without dealing with API keys.</li>
+            <li><strong>Reconciling accounts in chat:</strong> Instead of clicking through different QuickBooks screens to cross-check numbers for month-end close, he can ask his assistant to check balances, spot mismatches, and summarize vendor spend in seconds.</li>
+            <li><strong>An agent loop that writes its own skills:</strong> Inside the agent loop, I added a trigger powered by a <strong>meta-skill</strong> I built. Whenever the CFO explains a new accounting check or rule to the agent, that trigger automatically updates his existing finance skills or creates a brand-new skill for next time.</li>
           </ol>
 
           <figure class="article-figure article-figure-wide">
             <img src="../images/articles/quickbooks-oauth-connect.png" alt="Agent detecting QuickBooks as a managed provider and rendering a one-click OAuth Connect QuickBooks button directly in chat" loading="lazy">
-            <figcaption>One-click OAuth login in chat: asking to connect QuickBooks checks provider status and renders an inline Intuit OAuth connect card.</figcaption>
+            <figcaption>One-click OAuth login in chat: asking to connect QuickBooks checks provider status and renders an inline Connect button.</figcaption>
           </figure>
 
           <hr>
 
-          <h2 id="results">Results &amp; Impact</h2>
+          <h2 id="the-result">The result</h2>
           <ul>
-            <li><strong>15+ hours/week down to 4 hours/week:</strong> Cut manual QuickBooks reconciliation and month-end prep time by more than 70%, freeing up 11+ hours of executive finance time every single week.</li>
-            <li><strong>Instant answers to CEO spend questions:</strong> When the CEO asks whether marketing overspent or how a department is tracking against budget, the CFO asks his assistant and gets a consolidated, QuickBooks-verified breakdown almost instantly.</li>
-            <li><strong>True AI enablement:</strong> Because the agent loop uses the meta-skill to codify new financial checks into reusable skills, the CFO continuously expands the finance workflow himself without waiting on engineering.</li>
+            <li><strong>15+ hours a week down to 4 hours:</strong> Cut manual QuickBooks reconciliation and month-end prep time by over 70%, saving more than 11 hours every week.</li>
+            <li><strong>Fast answers for the CEO:</strong> When the CEO asks if marketing overspent, the CFO just asks his assistant and gets a clear, QuickBooks-backed breakdown right away.</li>
+            <li><strong>The CFO expands it himself:</strong> Because the agent loop uses the meta-skill to save new accounting checks as skills, the CFO keeps adding new capabilities on his own without waiting on engineering.</li>
           </ul>
         </div>
       </div>
