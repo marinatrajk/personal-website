@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Founding Engineer at Odyseek: From OCR Resume Parsing to a Full-Stack Career Agent &amp; AI ATS | Marina Trajkovska</title>
+  <meta name="description" content="My journey as founding engineer at Odyseek: reaching 100% resume import accuracy with OCR + LLMs, migrating from Bubble to TypeScript/React, building a voice interview agent, and shipping an AI ATS that detects soft skills like grit across 1,000+ resumes.">
+  <meta name="author" content="Marina Trajkovska">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marina Trajkovska">
+  <meta property="og:title" content="Founding Engineer at Odyseek: From OCR Resume Parsing to a Full-Stack Career Agent &amp; AI ATS | Marina Trajkovska">
+  <meta property="og:description" content="My journey as founding engineer at Odyseek: reaching 100% resume import accuracy with OCR + LLMs, migrating from Bubble to TypeScript/React, building a voice interview agent, and shipping an AI ATS that detects soft skills like grit across 1,000+ resumes.">
+  <meta property="og:image" content="../images/profile/marina-view.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marinatrajk">
+  <meta name="twitter:creator" content="@marinatrajk">
+  <meta name="twitter:title" content="Founding Engineer at Odyseek: From OCR Resume Parsing to a Full-Stack Career Agent &amp; AI ATS | Marina Trajkovska">
+  <meta name="twitter:description" content="My journey as founding engineer at Odyseek: reaching 100% resume import accuracy with OCR + LLMs, migrating from Bubble to TypeScript/React, building a voice interview agent, and shipping an AI ATS that detects soft skills like grit across 1,000+ resumes.">
+  <meta name="twitter:image" content="../images/profile/marina-view.jpg">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="post-layout">
+    <header class="post-header">
+      <a href="../index.html">Marina Trajkovska</a>
+      <nav class="post-header-nav">
+        <a href="#">rss</a>
+      </nav>
+    </header>
+
+    <article>
+      <h1>Rebuilding Odyseek into a full-stack career agent, voice coach, and soft-skill AI ATS</h1>
+
+      <div class="post-meta-row">
+        <p class="post-meta">Case study · Founding Engineer @ Odyseek</p>
+        <nav class="post-topics" aria-label="Article topics">
+          <a class="post-topic" href="../topics/agents.html">Agents</a>
+          <a class="post-topic" href="../topics/ai.html">AI</a>
+          <a class="post-topic" href="../topics/product.html">Product</a>
+        </nav>
+      </div>
+
+      <p class="post-standfirst">
+        <strong>How I took Odyseek from broken OCR resume imports on no-code to 100% parsing accuracy, rebuilt the platform in TypeScript and React as a chat and voice career agent, and built an AI ATS that screens 500 to 1,000 resumes for soft skills like grit.</strong>
+      </p>
+
+      <div class="article-body">
+        <nav class="toc is-hidden" aria-label="Table of contents" aria-hidden="true"></nav>
+
+        <div class="article-content">
+          <h2 id="fixing-resume-imports">Fixing broken resume imports (OCR + LLMs for 100% accuracy)</h2>
+          <p>
+            When I joined <a href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek</a> as founding engineer, the platform was struggling with its very first step: reading a user's resume. It relied on outdated OCR techniques that scrambled sections together, and the app had a maze of slow, fragile workflows just to sort a candidate's job history by date.
+          </p>
+          <p>
+            My first optimization was pairing OCR with LLMs to read the raw text and write clean, structured data on import. Combining OCR extraction with an LLM structuring pass brought our resume import accuracy to <strong>100%</strong> and eliminated the slow date-sorting workarounds overnight.
+          </p>
+
+          <hr>
+
+          <h2 id="granular-resume-audits">Auditing every part of a resume with AI</h2>
+          <p>
+            Once we could import resumes cleanly, I built targeted AI checks to review the actual quality of a resume line by line:
+          </p>
+          <ul>
+            <li>Checking pronoun usage and active voice across bullets.</li>
+            <li>Evaluating whether the wording and impact statements were clear.</li>
+            <li>Counting the number of bullet points per role so sections stayed balanced.</li>
+            <li>Checking layout formatting, summary length, and the right number of skills.</li>
+          </ul>
+
+          <hr>
+
+          <h2 id="migrating-to-typescript-and-react">Rebuilding from Bubble into a TypeScript &amp; React career agent</h2>
+          <p>
+            Originally, Odyseek was built on Bubble (no-code) and stitched together with several external tools, including Vellum for running our AI workflows. As the product grew, I decided to rebuild the entire platform from the ground up in <strong>TypeScript and React</strong> and bring all of our AI workflows in-house in one codebase.
+          </p>
+
+          <figure class="article-figure">
+            <svg viewBox="0 0 740 185" width="100%" role="img" aria-label="Diagram showing evolution from Bubble + OCR + External Workflows to In-House TypeScript/React Career Agent, Voice Coach, and AI ATS" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+              <defs>
+                <marker id="arrow-ody" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 9 5 L 0 9 z" fill="#7d786f"/>
+                </marker>
+              </defs>
+              <rect x="14" y="45" width="165" height="92" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="96" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">1. OCR + LLM Parser</text>
+              <text x="96" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">100% Import Accuracy</text>
+              <text x="96" y="113" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Line-by-Line Audits</text>
+
+              <line x1="179" y1="91" x2="215" y2="91" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-ody)"/>
+
+              <rect x="219" y="45" width="210" height="92" rx="6" fill="#ffffff" stroke="#c24e2b" stroke-width="1.5"/>
+              <text x="324" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">2. TypeScript &amp; React Agent</text>
+              <text x="324" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c24e2b">In-House AI Workflows</text>
+              <text x="324" y="113" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Role Matching + Voice Coach</text>
+
+              <line x1="429" y1="91" x2="465" y2="91" stroke="#7d786f" stroke-width="1.5" marker-end="url(#arrow-ody)"/>
+
+              <rect x="469" y="45" width="255" height="92" rx="6" fill="#f2efe9" stroke="#e6e1d7"/>
+              <text x="596" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#181715">3. Soft-Skill AI ATS</text>
+              <text x="596" y="95" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">500-1,000 Resume Batches</text>
+              <text x="596" y="113" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7d786f">Scores Grit &amp; Custom Traits</text>
+            </svg>
+          </figure>
+
+          <p>
+            Instead of filling out forms, users interacted with a simple, smart chatbot:
+          </p>
+          <ul>
+            <li><strong>Drop in a resume, get a full breakdown:</strong> You upload your resume in chat and the agent automatically runs all formatting, wording, and bullet-count checks.</li>
+            <li><strong>Role suggestions &amp; tailored rewrites:</strong> The agent suggests roles that fit your background and rewrites your resume for the exact role you want to target.</li>
+            <li><strong>Voice interview &amp; value-story coach:</strong> I also built a voice agent where candidates could practice live mock interviews and rehearse how they tell their personal value story out loud.</li>
+          </ul>
+
+          <hr>
+
+          <h2 id="ai-ats-soft-skills">Building an AI ATS that scores soft skills across 500 to 1,000 resumes</h2>
+          <p>
+            Alongside the candidate app, I built an AI-powered Applicant Tracking System (ATS) that helped companies like <strong>Mike's Hot Honey</strong> hire much faster by analyzing batches of <strong>500 to 1,000 resumes</strong> at once.
+          </p>
+          <p>
+            Most ATS tools only look for exact keyword matches. We designed ours to read between the lines and score <strong>soft skills, sentiment, and custom hiring criteria</strong>:
+          </p>
+          <ul>
+            <li><strong>Detecting grit from career trajectory:</strong> In one batch, a candidate had worked at Yahoo for over 20 years. A traditional filter might write that off as staying in one place too long, but our agent flagged him as high-grit because it traced how he steadily advanced through different roles and took on bigger responsibilities across those 20+ years.</li>
+            <li><strong>Custom trait scoring:</strong> Hiring teams could type in specific traits and criteria they cared about for a role, and the ATS scored every resume on how many of those traits showed up in the candidate's actual history.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="nav">
+      <a href="../index.html">← back home</a>
+    </nav>
+  </main>
+
+  <button class="like-btn" aria-label="Like this post">
+    <svg class="like-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <span class="like-count"></span>
+  </button>
+
+  <script>
+    const toc = document.querySelector(".toc");
+    const headings = document.querySelectorAll("article h2");
+    if (toc && headings.length > 0) {
+      headings.forEach((h2) => {
+        const link = document.createElement("a");
+        link.href = "#" + h2.id;
+        link.textContent = h2.textContent;
+        toc.appendChild(link);
+      });
+      toc.classList.remove("is-hidden");
+      toc.setAttribute("aria-hidden", "false");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              toc.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+              const active = toc.querySelector(`a[href="#${entry.target.id}"]`);
+              active?.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "0px 0px -70% 0px" }
+      );
+      headings.forEach((h2) => observer.observe(h2));
+    }
+
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = likeBtn?.querySelector(".like-count");
+    likeBtn?.addEventListener("click", () => {
+      const liked = likeBtn.classList.toggle("liked");
+      likeBtn.classList.remove("like-pop");
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add("like-pop");
+      if (likeCount) {
+        const current = parseInt(likeCount.textContent || "0", 10);
+        likeCount.textContent = liked ? String(current + 1) : (current - 1 > 0 ? String(current - 1) : "");
+      }
+    });
+  </script>
+</body>
+</html>
