@@ -116,6 +116,23 @@
 
           <hr>
 
+          <h2 id="voice-interview-agent">Why I built the interview coach with a voice-to-voice model</h2>
+          <p>
+            When I built the voice agent for interview prep, I had to choose between two setups: a traditional <strong>voice-to-text &rarr; agent loop &rarr; text-to-voice</strong> pipeline, or a direct <strong>voice-to-voice model</strong>.
+          </p>
+          <p>
+            During a mock interview call, the agent doesn't need to pull in new external data mid-conversation. Everything it needs is already loaded before the call starts: the interview questions, the target role, and the candidate's resume.
+          </p>
+          <p>
+            Because there was no need for an agent loop in the middle of the call, going straight to a <strong>voice-to-voice model</strong> instead of chaining voice-to-text and text-to-voice made the experience much better:
+          </p>
+          <ul>
+            <li><strong>Zero middleman latency:</strong> Without a transcription step, an LLM reasoning loop, and a separate speech synthesis step on every turn, replies happen right away.</li>
+            <li><strong>A much smoother, natural conversation:</strong> Practicing your value story out loud feels like a real back-and-forth interview instead of waiting on a laggy bot.</li>
+          </ul>
+
+          <hr>
+
           <h2 id="ai-ats-soft-skills">Building an AI ATS that scores soft skills across 500 to 1,000 resumes</h2>
           <p>
             Alongside the candidate app, I built an AI-powered Applicant Tracking System (ATS) that helped companies like <strong>Mike's Hot Honey</strong> hire much faster by analyzing batches of <strong>500 to 1,000 resumes</strong> at once.
