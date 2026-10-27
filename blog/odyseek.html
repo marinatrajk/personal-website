@@ -42,7 +42,7 @@
       </div>
 
       <p class="post-standfirst">
-        <strong>How I took Odyseek from broken OCR resume imports on no-code to 100% parsing accuracy, rebuilt the platform in TypeScript and React as a chat and voice career agent, and built an AI ATS that screens 500 to 1,000 resumes for soft skills like grit.</strong>
+        <strong>When I joined <a href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek</a> as founding engineer, the product had a lot of potential and a shaky foundation. Over the next stretch I fixed how it read resumes, rebuilt the whole platform in TypeScript and React as a chat and voice career agent, and built an AI ATS that screens 500 to 1,000 resumes at a time for soft skills like grit. This post walks through each step.</strong>
       </p>
 
       <div class="article-body">
@@ -51,30 +51,30 @@
         <div class="article-content">
           <h2 id="fixing-resume-imports">Fixing broken resume imports (OCR + LLMs for 100% accuracy)</h2>
           <p>
-            When I joined <a href="https://www.odyseek.com/" target="_blank" rel="noopener noreferrer">Odyseek</a> as founding engineer, the platform was struggling with its very first step: reading a user's resume. It relied on outdated OCR techniques that scrambled sections together, and the app had a maze of slow, fragile workflows just to sort a candidate's job history by date.
+            The first problem was the most basic one: Odyseek couldn't reliably read a resume. It used outdated OCR that jumbled sections together, and sorting a candidate's job history by date took a maze of slow, fragile workflows.
           </p>
           <p>
-            My first optimization was pairing OCR with LLMs to read the raw text and write clean, structured data on import. Combining OCR extraction with an LLM structuring pass brought our resume import accuracy to <strong>100%</strong> and eliminated the slow date-sorting workarounds overnight.
+            My first fix was to pair OCR with an LLM. OCR pulls out the raw text, and the LLM turns it into clean, structured data on import. With that combination, import accuracy reached <strong>100%</strong>, and we got rid of the date-sorting workarounds almost overnight.
           </p>
 
           <hr>
 
           <h2 id="granular-resume-audits">Auditing every part of a resume with AI</h2>
           <p>
-            Once we could import resumes cleanly, I built targeted AI checks to review the actual quality of a resume line by line:
+            Once resumes were coming in clean, we could start judging how good they were. I built a set of targeted AI checks that review a resume line by line:
           </p>
           <ul>
-            <li>Checking pronoun usage and active voice across bullets.</li>
-            <li>Evaluating whether the wording and impact statements were clear.</li>
-            <li>Counting the number of bullet points per role so sections stayed balanced.</li>
-            <li>Checking layout formatting, summary length, and the right number of skills.</li>
+            <li><strong>Voice and pronouns:</strong> Do bullets use active voice and avoid personal pronouns?</li>
+            <li><strong>Clarity and impact:</strong> Is the wording clear, and do the impact statements land?</li>
+            <li><strong>Balance:</strong> Does each role have a sensible number of bullet points?</li>
+            <li><strong>Structure:</strong> Are the layout, summary length, and number of skills right?</li>
           </ul>
 
           <hr>
 
           <h2 id="migrating-to-typescript-and-react">Rebuilding from Bubble into a TypeScript &amp; React career agent</h2>
           <p>
-            Originally, Odyseek was built on Bubble (no-code) and stitched together with several external tools, including Vellum for running our AI workflows. As the product grew, I decided to rebuild the entire platform from the ground up in <strong>TypeScript and React</strong> and bring all of our AI workflows in-house in one codebase.
+            As these features piled up, the original stack started to hold us back. Odyseek was built on Bubble (no-code) and stitched together with several outside tools, including Vellum for running our AI workflows. I decided to rebuild the entire platform from scratch in <strong>TypeScript and React</strong> and bring all of our AI workflows into one in-house codebase.
           </p>
 
           <figure class="article-figure">
@@ -106,43 +106,40 @@
           </figure>
 
           <p>
-            Instead of filling out forms, users interacted with a simple, smart chatbot:
+            The rebuild also changed how people used the product. Instead of filling out forms, users talked to a simple, smart chatbot:
           </p>
           <ul>
-            <li><strong>Drop in a resume, get a full breakdown:</strong> You upload your resume in chat and the agent automatically runs all formatting, wording, and bullet-count checks.</li>
-            <li><strong>Role suggestions &amp; tailored rewrites:</strong> The agent suggests roles that fit your background and rewrites your resume for the exact role you want to target.</li>
-            <li><strong>Voice interview &amp; value-story coach:</strong> I also built a voice agent where candidates could practice live mock interviews and rehearse how they tell their personal value story out loud.</li>
+            <li><strong>Drop in a resume, get a full breakdown.</strong> Upload your resume in chat, and the agent runs every formatting, wording, and bullet-count check automatically.</li>
+            <li><strong>Role suggestions and tailored rewrites.</strong> The agent suggests roles that fit your background, then rewrites your resume for the exact role you want.</li>
+            <li><strong>Voice interview and value-story coach.</strong> Candidates can practice live mock interviews and rehearse telling their personal value story out loud.</li>
           </ul>
 
           <hr>
 
           <h2 id="voice-interview-agent">Why I built the interview coach with a voice-to-voice model</h2>
           <p>
-            When I built the voice agent for interview prep, I had to choose between two setups: a traditional <strong>voice-to-text &rarr; agent loop &rarr; text-to-voice</strong> pipeline, or a direct <strong>voice-to-voice model</strong>.
+            That last feature involved an important design decision. I could build the voice agent as a traditional pipeline (speech-to-text &rarr; agent loop &rarr; text-to-speech), or I could use a direct <strong>voice-to-voice model</strong>.
           </p>
           <p>
-            During a mock interview call, the agent doesn't need to pull in new external data mid-conversation. Everything it needs is already loaded before the call starts: the interview questions, the target role, and the candidate's resume.
-          </p>
-          <p>
-            Because there was no need for an agent loop in the middle of the call, going straight to a <strong>voice-to-voice model</strong> instead of chaining voice-to-text and text-to-voice made the experience much better:
+            The deciding factor was that a mock interview doesn't need any new information mid-call. Everything the agent needs (the interview questions, the target role, and the candidate's resume) is loaded before the call starts. Since there was no reason to run an agent loop during the conversation, I went straight to voice-to-voice, and the experience was much better for it:
           </p>
           <ul>
-            <li><strong>Zero middleman latency:</strong> Without a transcription step, an LLM reasoning loop, and a separate speech synthesis step on every turn, replies happen right away.</li>
-            <li><strong>A much smoother, natural conversation:</strong> Practicing your value story out loud feels like a real back-and-forth interview instead of waiting on a laggy bot.</li>
+            <li><strong>No middleman latency.</strong> Each turn skips transcription, an LLM reasoning loop, and a separate speech synthesis step, so replies come right away.</li>
+            <li><strong>A natural conversation.</strong> Practicing your value story feels like a real back-and-forth interview, not like waiting on a laggy bot.</li>
           </ul>
 
           <hr>
 
           <h2 id="ai-ats-soft-skills">Building an AI ATS that scores soft skills across 500 to 1,000 resumes</h2>
           <p>
-            Alongside the candidate app, I built an AI-powered Applicant Tracking System (ATS) that helped companies like <strong>Mike's Hot Honey</strong> hire much faster by analyzing batches of <strong>500 to 1,000 resumes</strong> at once.
+            While all of this served candidates, we also built for the other side of hiring. I created an AI-powered Applicant Tracking System (ATS) that analyzes batches of <strong>500 to 1,000 resumes</strong> at once, helping companies like <strong>Mike's Hot Honey</strong> hire much faster.
           </p>
           <p>
-            Most ATS tools only look for exact keyword matches. We designed ours to read between the lines and score <strong>soft skills, sentiment, and custom hiring criteria</strong>:
+            Most ATS tools only look for exact keyword matches. We designed ours to read between the lines and score soft skills, sentiment, and custom hiring criteria:
           </p>
           <ul>
-            <li><strong>Detecting grit from career trajectory:</strong> In one batch, a candidate had worked at Yahoo for over 20 years. A traditional filter might write that off as staying in one place too long, but our agent flagged him as high-grit because it traced how he steadily advanced through different roles and took on bigger responsibilities across those 20+ years.</li>
-            <li><strong>Custom trait scoring:</strong> Hiring teams could type in specific traits and criteria they cared about for a role, and the ATS scored every resume on how many of those traits showed up in the candidate's actual history.</li>
+            <li><strong>Detecting grit from career trajectory.</strong> In one batch, a candidate had spent more than 20 years at Yahoo. A traditional filter might have counted that against him as staying in one place too long. Our agent flagged him as high-grit instead, because it traced how he steadily moved up through different roles and took on bigger responsibilities over those two decades.</li>
+            <li><strong>Custom trait scoring.</strong> Hiring teams could type in the traits and criteria they cared about for a role, and the ATS scored every resume on how many of them showed up in the candidate's actual history.</li>
           </ul>
         </div>
       </div>
